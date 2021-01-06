@@ -5,7 +5,7 @@ let newDate = d.getMonth()+1+'.'+ d.getDate()+'.'+ d.getFullYear();
 
 /* Global Variables */
 const baseUrl = "https://api.openweathermap.org/data/2.5/weather?zip=";
-const API_KEY = "40920e96f6692cfaf039f8ea5bcbcf68";
+const API_KEY = process.env.API_KEY;
 
 
 
@@ -17,6 +17,11 @@ document.getElementById('generate').addEventListener('click', performAction);
 function performAction(e) {
     let newZipCode = document.getElementById("zip").value;
     let newContent = document.getElementById("feelings").value;
+
+    if (newZipCode == "" ) {
+        alert("Please provide a zip code");
+        return false;
+      }
     
     
     getData(baseUrl, newZipCode, API_KEY)
@@ -70,10 +75,9 @@ const updateUI = async () => {
     const request = await fetch('/all');
     try{
         const allData = await request.json();
-        const recentData = allData[allData.length - 1];
-        document.getElementById('date').innerHTML = `Date: ${recentData.date}`;
-        document.getElementById('temp').innerHTML = `Temperature: ${recentData.temp} °C`;
-        document.getElementById('content').innerHTML = `I feel: ${recentData.content}`;
+        document.getElementById('date').innerHTML = `Date: ${allData.date}`;
+        document.getElementById('temp').innerHTML = `Temperature: ${allData.temp} °C`;
+        document.getElementById('content').innerHTML = `I feel: ${allData.content}`;
   
     }catch(error){
       console.log("error", error);
