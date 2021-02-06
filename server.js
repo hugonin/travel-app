@@ -25,7 +25,7 @@ app.use(express.static('website'));
 
 // Setup Server
 
-const port = 3000;
+const port = 8080;
 /* Spin up the server*/
 const server = app.listen(port, listening);
 
@@ -50,7 +50,7 @@ function addData(req, res) {
     projectData.date = req.body.date;
     projectData.temp = req.body.temp;
     projectData.content = req.body.content;
-    res.end();
+    res.send();
     console.log(projectData)
 }
   
