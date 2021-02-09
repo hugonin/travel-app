@@ -40,9 +40,9 @@ function sendData(req,res) {
 app.post('/add', addData);
 
 function addData(req, res) {
-    projectData.date = req.body.date;
-    projectData.temp = req.body.temp;
-    projectData.content = req.body.content;
+    projectData.lat = req.body.lat;
+    projectData.lng = req.body.lng;
+    projectData.country = req.body.countryName;
     res.send();
     console.log(projectData)
 }

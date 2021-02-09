@@ -4,8 +4,8 @@ let d = new Date();
 let newDate = d.getMonth()+1+'.'+ d.getDate()+'.'+ d.getFullYear();
 
 /* Global Variables */
-const baseUrl = "https://api.openweathermap.org/data/2.5/weather?zip=";
-const API_KEY = process.env.API_KEY;
+const baseUrl = "http://api.geonames.org/searchJSON?q=";
+const API_KEY = process.env.USERNAME;
 
 
 // Event listener to add function to existing HTML DOM element 
@@ -15,20 +15,20 @@ const API_KEY = process.env.API_KEY;
 function performAction(event) {
     event.preventDefault()
 
-    let newZipCode = document.getElementById("zip").value;
-    let newContent = document.getElementById("feelings").value;
+    let newCity = document.getElementById("city").value;
+    let newContent = document.getElementById("departure").value;
 
-    if (newZipCode == "" ) {
-        alert("Please provide a zip code");
+    if (newCity == "" ) {
+        alert("Please provide a city name");
         return false;
       }
     
     
-    getData(baseUrl, newZipCode, API_KEY)
+    getData(baseUrl, newCity, API_KEY)
         .then(function(data) {
             console.log(data);
             //Add data to POST request
-            postData('/add', {date: newDate, temp: data.main.temp, content: newContent});
+            postData('/add', {date: newDate, lat: data.main.lat, lng: data.main.lng, content: newContent});
         }) 
         .then(()=> {
             updateUI();
@@ -37,9 +37,9 @@ function performAction(event) {
 
 
 // asynchronous function to fetch the data from the app endpoint  
-const getData = async (url, zip, key) => {
+const getData = async (url, city, key) => {
 
-    const res = await fetch(url + `${zip}&appid=${key}&units=metric`)
+    const res = await fetch(url + `${city}&maxRows=1&username=${key}`)
     try {
         const data = await res.json();
         return data;
@@ -75,9 +75,9 @@ const updateUI = async () => {
     const request = await fetch('/all');
     try{
         const allData = await request.json();
-        document.getElementById('date').innerHTML = `Date: ${allData.date}`;
-        document.getElementById('temp').innerHTML = `Temperature: ${allData.temp} °C`;
-        document.getElementById('content').innerHTML = `I feel: ${allData.content}`;
+        document.getElementById('lat').innerHTML = `Latitude: ${allData.lat}`;
+        document.getElementById('lng').innerHTML = `Longitude: ${allData.lng} °C`;
+        document.getElementById('country').innerHTML = `Country: ${allData.countryName}`;
   
     }catch(error){
       console.log("error", error);
