@@ -21,21 +21,14 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // Initialize the main project folder
-app.use(express.static('website'));
+app.use(express.static('dist'));
 
-// Setup Server
-
-const port = 8080;
-/* Spin up the server*/
-const server = app.listen(port, listening);
-
-//Debug
-function listening(){
-    console.log(`server running`);
-    console.log(`running on localhost: ${port}`);
-}
 
 //Get Route setup 
+app.get('/', function (req, res) {
+    res.sendFile('dist/index.html')
+})
+
 app.get('/all', sendData);
 
 //Callback function to return the JS object created at the top of server code'
@@ -54,6 +47,14 @@ function addData(req, res) {
     console.log(projectData)
 }
   
+// Setup Server
 
-  
+const port = 8081;
+/* Spin up the server*/
+const server = app.listen(port, listening);
 
+//Debug
+function listening(){
+    console.log(`server running`);
+    console.log(`running on localhost: ${port}`);
+}

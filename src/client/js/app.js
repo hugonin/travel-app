@@ -8,13 +8,13 @@ const baseUrl = "https://api.openweathermap.org/data/2.5/weather?zip=";
 const API_KEY = process.env.API_KEY;
 
 
-
-
 // Event listener to add function to existing HTML DOM element 
-document.getElementById('generate').addEventListener('click', performAction);
+//document.getElementById('generate').addEventListener('click', performAction);
 
 // Function called by event listener
-function performAction(e) {
+function performAction(event) {
+    event.preventDefault()
+
     let newZipCode = document.getElementById("zip").value;
     let newContent = document.getElementById("feelings").value;
 
@@ -83,4 +83,7 @@ const updateUI = async () => {
       console.log("error", error);
     }
   }
+
+
+  export { performAction }  
 
