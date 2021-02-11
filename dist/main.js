@@ -82,7 +82,7 @@ var Client =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -90,105 +90,7 @@ var Client =
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return performAction; });
-
-// Create a new date instance dynamically with JS
-let d = new Date();
-let newDate = d.getMonth()+1+'.'+ d.getDate()+'.'+ d.getFullYear();
-
-/* Global Variables */
-const baseUrl = "https://api.openweathermap.org/data/2.5/weather?zip=";
-const API_KEY = process.env.API_KEY;
-
-
-// Event listener to add function to existing HTML DOM element 
-//document.getElementById('generate').addEventListener('click', performAction);
-
-// Function called by event listener
-function performAction(event) {
-    event.preventDefault()
-
-    let newZipCode = document.getElementById("zip").value;
-    let newContent = document.getElementById("feelings").value;
-
-    if (newZipCode == "" ) {
-        alert("Please provide a zip code");
-        return false;
-      }
-    
-    
-    getData(baseUrl, newZipCode, API_KEY)
-        .then(function(data) {
-            console.log(data);
-            //Add data to POST request
-            postData('/add', {date: newDate, temp: data.main.temp, content: newContent});
-        }) 
-        .then(()=> {
-            updateUI();
-        })
-}
-
-
-// asynchronous function to fetch the data from the app endpoint  
-const getData = async (url, zip, key) => {
-
-    const res = await fetch(url + `${zip}&appid=${key}&units=metric`)
-    try {
-        const data = await res.json();
-        return data;
-    } catch(error) {
-        console.log("error", error)
-    }
-}
-
-// Post Route
-const postData = async ( url = '', data = {}) => {
-    const response = await fetch(url, {
-        method: 'POST', 
-        credentials: 'same-origin', 
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data)  
-    });
-    
-    try {
-        const newData = await response.json();
-        console.log(newData);
-        return newData;
-      } catch(error) {
-      console.log("error", error);
-      }
-};
-
-
-// Update UI function
-const updateUI = async () => {
-  
-    const request = await fetch('/all');
-    try{
-        const allData = await request.json();
-        document.getElementById('date').innerHTML = `Date: ${allData.date}`;
-        document.getElementById('temp').innerHTML = `Temperature: ${allData.temp} °C`;
-        document.getElementById('content').innerHTML = `I feel: ${allData.content}`;
-  
-    }catch(error){
-      console.log("error", error);
-    }
-  }
-
-
-    
-
-
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(4)))
-
-/***/ }),
-/* 1 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
 // Imports
 
@@ -200,7 +102,7 @@ ___CSS_LOADER_EXPORT___.push([module.i, "*{box-sizing:border-box}body{background
 
 
 /***/ }),
-/* 2 */
+/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -475,7 +377,7 @@ module.exports = function (list, options) {
 };
 
 /***/ }),
-/* 3 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -547,197 +449,7 @@ module.exports = function (cssWithMappingToString) {
 };
 
 /***/ }),
-/* 4 */
-/***/ (function(module, exports) {
-
-// shim for using process in browser
-var process = module.exports = {};
-
-// cached from whatever global is present so that test runners that stub it
-// don't break things.  But we need to wrap it in a try catch in case it is
-// wrapped in strict mode code which doesn't define any globals.  It's inside a
-// function because try/catches deoptimize in certain engines.
-
-var cachedSetTimeout;
-var cachedClearTimeout;
-
-function defaultSetTimout() {
-    throw new Error('setTimeout has not been defined');
-}
-function defaultClearTimeout () {
-    throw new Error('clearTimeout has not been defined');
-}
-(function () {
-    try {
-        if (typeof setTimeout === 'function') {
-            cachedSetTimeout = setTimeout;
-        } else {
-            cachedSetTimeout = defaultSetTimout;
-        }
-    } catch (e) {
-        cachedSetTimeout = defaultSetTimout;
-    }
-    try {
-        if (typeof clearTimeout === 'function') {
-            cachedClearTimeout = clearTimeout;
-        } else {
-            cachedClearTimeout = defaultClearTimeout;
-        }
-    } catch (e) {
-        cachedClearTimeout = defaultClearTimeout;
-    }
-} ())
-function runTimeout(fun) {
-    if (cachedSetTimeout === setTimeout) {
-        //normal enviroments in sane situations
-        return setTimeout(fun, 0);
-    }
-    // if setTimeout wasn't available but was latter defined
-    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
-        cachedSetTimeout = setTimeout;
-        return setTimeout(fun, 0);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedSetTimeout(fun, 0);
-    } catch(e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
-            return cachedSetTimeout.call(null, fun, 0);
-        } catch(e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
-            return cachedSetTimeout.call(this, fun, 0);
-        }
-    }
-
-
-}
-function runClearTimeout(marker) {
-    if (cachedClearTimeout === clearTimeout) {
-        //normal enviroments in sane situations
-        return clearTimeout(marker);
-    }
-    // if clearTimeout wasn't available but was latter defined
-    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
-        cachedClearTimeout = clearTimeout;
-        return clearTimeout(marker);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedClearTimeout(marker);
-    } catch (e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
-            return cachedClearTimeout.call(null, marker);
-        } catch (e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
-            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
-            return cachedClearTimeout.call(this, marker);
-        }
-    }
-
-
-
-}
-var queue = [];
-var draining = false;
-var currentQueue;
-var queueIndex = -1;
-
-function cleanUpNextTick() {
-    if (!draining || !currentQueue) {
-        return;
-    }
-    draining = false;
-    if (currentQueue.length) {
-        queue = currentQueue.concat(queue);
-    } else {
-        queueIndex = -1;
-    }
-    if (queue.length) {
-        drainQueue();
-    }
-}
-
-function drainQueue() {
-    if (draining) {
-        return;
-    }
-    var timeout = runTimeout(cleanUpNextTick);
-    draining = true;
-
-    var len = queue.length;
-    while(len) {
-        currentQueue = queue;
-        queue = [];
-        while (++queueIndex < len) {
-            if (currentQueue) {
-                currentQueue[queueIndex].run();
-            }
-        }
-        queueIndex = -1;
-        len = queue.length;
-    }
-    currentQueue = null;
-    draining = false;
-    runClearTimeout(timeout);
-}
-
-process.nextTick = function (fun) {
-    var args = new Array(arguments.length - 1);
-    if (arguments.length > 1) {
-        for (var i = 1; i < arguments.length; i++) {
-            args[i - 1] = arguments[i];
-        }
-    }
-    queue.push(new Item(fun, args));
-    if (queue.length === 1 && !draining) {
-        runTimeout(drainQueue);
-    }
-};
-
-// v8 likes predictible objects
-function Item(fun, array) {
-    this.fun = fun;
-    this.array = array;
-}
-Item.prototype.run = function () {
-    this.fun.apply(null, this.array);
-};
-process.title = 'browser';
-process.browser = true;
-process.env = {};
-process.argv = [];
-process.version = ''; // empty string to avoid regexp issues
-process.versions = {};
-
-function noop() {}
-
-process.on = noop;
-process.addListener = noop;
-process.once = noop;
-process.off = noop;
-process.removeListener = noop;
-process.removeAllListeners = noop;
-process.emit = noop;
-process.prependListener = noop;
-process.prependOnceListener = noop;
-
-process.listeners = function (name) { return [] }
-
-process.binding = function (name) {
-    throw new Error('process.binding is not supported');
-};
-
-process.cwd = function () { return '/' };
-process.chdir = function (dir) {
-    throw new Error('process.chdir is not supported');
-};
-process.umask = function() { return 0; };
-
-
-/***/ }),
-/* 5 */
+/* 3 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -745,17 +457,106 @@ process.umask = function() { return 0; };
 __webpack_require__.r(__webpack_exports__);
 
 // EXPORTS
-__webpack_require__.d(__webpack_exports__, "performAction", function() { return /* reexport */ app["a" /* performAction */]; });
+__webpack_require__.d(__webpack_exports__, "performAction", function() { return /* reexport */ performAction; });
 
-// EXTERNAL MODULE: ./src/client/js/app.js
-var app = __webpack_require__(0);
+// CONCATENATED MODULE: ./src/client/js/app.js
+
+// Create a new date instance dynamically with JS
+let d = new Date();
+let newDate = d.getMonth()+1+'.'+ d.getDate()+'.'+ d.getFullYear();
+
+/* Global Variables */
+const baseUrl = "http://api.geonames.org/searchJSON?q=";
+const USERNAME = "hugonin_";
+
+
+// Event listener to add function to existing HTML DOM element 
+//document.getElementById('generate').addEventListener('click', performAction);
+
+// Function called by event listener
+function performAction(event) {
+    event.preventDefault()
+
+    let newCity = document.getElementById("city").value;
+    let newContent = document.getElementById("departure").value;
+
+    if (newCity == "" ) {
+        alert("Please provide a city name");
+        return false;
+      }
+    
+    
+    getData(baseUrl, newCity, USERNAME)
+        .then(function(data) {
+            console.log(data);
+            //Add data to POST request
+            postData('/add', { lat: data.geonames.lat, lng: data.geonames.lng, country: data.geonames.countryName });
+        }) 
+        .then(()=> {
+            updateUI();
+        })
+}
+
+
+// asynchronous function to fetch the data from the app endpoint  
+const getData = async (url, city, username) => {
+
+    const res = await fetch(url + `${city}&maxRows=1&username=${username}`)
+    try {
+        const data = await res.json();
+        console.log(data)
+        return data;
+    } catch(error) {
+        console.log("error", error)
+    }
+}
+
+// Post Route
+const postData = async ( url = '', data = {}) => {
+    const response = await fetch(url, {
+        method: 'POST', 
+        credentials: 'same-origin', 
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)  
+    });
+    
+    try {
+        const newData = await response.json();
+        console.log(newData);
+        return newData;
+      } catch(error) {
+      console.log("error", error);
+      }
+};
+
+
+// Update UI function
+const updateUI = async () => {
+  
+    const request = await fetch('/all');
+    try{
+        const allData = await request.json();
+        document.getElementById('lat').innerHTML = `Latitude: ${allData.lat}`;
+        document.getElementById('lng').innerHTML = `Longitude: ${allData.lng} `;
+        document.getElementById('country').innerHTML = `Country: ${allData.countryName}`;
+  
+    }catch(error){
+      console.log("error", error);
+    }
+  }
+
+
+    
+
 
 // EXTERNAL MODULE: ./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js
-var injectStylesIntoStyleTag = __webpack_require__(2);
+var injectStylesIntoStyleTag = __webpack_require__(1);
 var injectStylesIntoStyleTag_default = /*#__PURE__*/__webpack_require__.n(injectStylesIntoStyleTag);
 
 // EXTERNAL MODULE: ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/client/styles/style.scss
-var style = __webpack_require__(1);
+var style = __webpack_require__(0);
 
 // CONCATENATED MODULE: ./src/client/styles/style.scss
 
@@ -777,7 +578,7 @@ var update = injectStylesIntoStyleTag_default()(style["a" /* default */], option
 
 
 // Event listener to add function to existing HTML DOM element 
-document.getElementById('generate').addEventListener('click', app["a" /* performAction */]);
+document.getElementById('generate').addEventListener('click', performAction);
 
 
 

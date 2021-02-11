@@ -5,7 +5,7 @@ let newDate = d.getMonth()+1+'.'+ d.getDate()+'.'+ d.getFullYear();
 
 /* Global Variables */
 const baseUrl = "http://api.geonames.org/searchJSON?q=";
-const API_KEY = process.env.USERNAME;
+const USERNAME = USERNAME;
 
 
 // Event listener to add function to existing HTML DOM element 
@@ -24,11 +24,11 @@ function performAction(event) {
       }
     
     
-    getData(baseUrl, newCity, API_KEY)
+    getData(baseUrl, newCity, USERNAME)
         .then(function(data) {
             console.log(data);
             //Add data to POST request
-            postData('/add', {date: newDate, lat: data.main.lat, lng: data.main.lng, content: newContent});
+            postData('/add', { lat: data.geonames.lat, lng: data.geonames.lng, country: data.geonames.countryName });
         }) 
         .then(()=> {
             updateUI();
@@ -37,11 +37,12 @@ function performAction(event) {
 
 
 // asynchronous function to fetch the data from the app endpoint  
-const getData = async (url, city, key) => {
+const getData = async (url, city, username) => {
 
-    const res = await fetch(url + `${city}&maxRows=1&username=${key}`)
+    const res = await fetch(url + `${city}&maxRows=1&username=${username}`)
     try {
         const data = await res.json();
+        console.log(data)
         return data;
     } catch(error) {
         console.log("error", error)
@@ -76,7 +77,7 @@ const updateUI = async () => {
     try{
         const allData = await request.json();
         document.getElementById('lat').innerHTML = `Latitude: ${allData.lat}`;
-        document.getElementById('lng').innerHTML = `Longitude: ${allData.lng} °C`;
+        document.getElementById('lng').innerHTML = `Longitude: ${allData.lng} `;
         document.getElementById('country').innerHTML = `Country: ${allData.countryName}`;
   
     }catch(error){
