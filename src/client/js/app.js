@@ -1,11 +1,12 @@
-
-// Create a new date instance dynamically with JS
-let d = new Date();
-let newDate = d.getMonth()+1+'.'+ d.getDate()+'.'+ d.getFullYear();
+import { countdownTimer } from './countdown'
 
 /* Global Variables */
 const baseUrl = "http://api.geonames.org/searchJSON?q=";
-const USERNAME = USERNAME;
+const baseUrlWeather = "http://api.weatherbit.io/v2.0/forecast/daily?";
+const baseUrlImage = "https://pixabay.com/api/?";
+const USERNAME = process.env.USERNAME; // Geonames
+const API_KEY_1 = process.env.API_KEY_1; // WeatherBit 
+const API_KEY_2 = process.env.API_KEY_2 // Pixabay 
 
 
 // Event listener to add function to existing HTML DOM element 
@@ -16,27 +17,42 @@ function performAction(event) {
     event.preventDefault()
 
     let newCity = document.getElementById("city").value;
-    let newContent = document.getElementById("departure").value;
 
+ 
     if (newCity == "" ) {
         alert("Please provide a city name");
         return false;
       }
-    
-    
-    getData(baseUrl, newCity, USERNAME)
-        .then(function(data) {
-            console.log(data);
-            //Add data to POST request
-            postData('/add', { lat: data.geonames.lat, lng: data.geonames.lng, country: data.geonames.countryName });
-        }) 
-        .then(()=> {
-            updateUI();
-        })
+
+        getData(baseUrl, newCity, USERNAME)
+            .then(function(data) {
+                const lat = data.geonames[0].lat;
+                const lng = data.geonames[0].lng;
+                const country = data.geonames[0].countryName;
+                console.log(data);
+                //Add data to POST request
+                postData('/add', { lat, lng, country, newCity });
+                countdownTimer();
+                setInterval(countdownTimer, 1000);
+                getWeatherData(baseUrlWeather, lat, lng, API_KEY_1)
+                    .then(function(weatherData) {
+                    console.log(weatherData);
+                    postData('/add', { temp: weatherData.data[0].temp, date: weatherData.data[0].datetime });
+                })
+                getImage(baseUrlImage, newCity, API_KEY_2)
+                    .then(function(imageData) {
+                    console.log(imageData);
+                    postData('/add', { image: imageData.hits[0].webformatURL });
+                })
+            }) 
+            .then(()=> {
+                updateUI();
+                })
+         
 }
 
 
-// asynchronous function to fetch the data from the app endpoint  
+// asynchronous function to fetch the data from the geonames app endpoint  
 const getData = async (url, city, username) => {
 
     const res = await fetch(url + `${city}&maxRows=1&username=${username}`)
@@ -48,6 +64,34 @@ const getData = async (url, city, username) => {
         console.log("error", error)
     }
 }
+
+// asynchronous function to fetch the data from the weatherBit app endpoint  
+const getWeatherData = async (url, lat, lon, key ) => {
+
+    const res = await fetch(url + `&lat=${lat}&lon=${lon}&key=${key}`)
+    try {
+        const weatherData = await res.json();
+        console.log(weatherData)
+        return weatherData;
+    } catch(error) {
+        console.log("error", error)
+    }
+}
+
+
+// asynchronous function to fetch the data from the pixabay app endpoint  
+const getImage = async (url, city, key) => {
+
+    const res = await fetch(url + `&key=${key}&q=${city}&image_type=photo`)
+    try {
+        const imageData = await res.json();
+        console.log(imageData)
+        return imageData;
+    } catch(error) {
+        console.log("error", error)
+    }
+}
+
 
 // Post Route
 const postData = async ( url = '', data = {}) => {
@@ -79,6 +123,9 @@ const updateUI = async () => {
         document.getElementById('lat').innerHTML = `Latitude: ${allData.lat}`;
         document.getElementById('lng').innerHTML = `Longitude: ${allData.lng} `;
         document.getElementById('country').innerHTML = `Country: ${allData.countryName}`;
+        document.getElementById('temp').innerHTML = `Temperature: ${allData.temp}`;
+        document.getElementById('date').innerHTML = `Date: ${allData.date}`;
+        document.getElementById('placeimage').innerHTML = `<img src="${allData.image}" alt="Place image">`;
   
     }catch(error){
       console.log("error", error);
@@ -86,5 +133,8 @@ const updateUI = async () => {
   }
 
 
-  export { performAction }  
+  export { 
+      performAction,
+      countdownTimer
+     }  
 

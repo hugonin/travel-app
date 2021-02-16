@@ -1,5 +1,7 @@
 // Setup empty JS object to act as endpoint for all routes
-const projectData = {};
+let projectData = {};
+
+require('dotenv').config();
 
 // Require Express to run server and routes
 const express = require("express");
@@ -40,9 +42,10 @@ function sendData(req,res) {
 app.post('/add', addData);
 
 function addData(req, res) {
-    projectData.lat = req.body.lat;
-    projectData.lng = req.body.lng;
-    projectData.country = req.body.countryName;
+    projectData = {
+        ...req.body,
+        ...projectData
+      }
     res.send();
     console.log(projectData)
 }
