@@ -1,8 +1,8 @@
-let dateInput = document.getElementById("departure").value;
-let currentDate =  new Date(); 
-let departureDate = new Date(dateInput); 
 
 function countdownTimer() {
+  let dateInput = document.getElementById("departure").value;
+  let currentDate =  new Date(); 
+  let departureDate = new Date(dateInput); 
   const difference =  +departureDate - +currentDate // difference is cast as an integer and calculated in milliseconds
   let remaining = "Time's up!"
 
@@ -24,6 +24,8 @@ function countdownTimer() {
   document.getElementById("countdown").innerHTML = remaining;
 }
 
+countdownTimer();
+setInterval(countdownTimer, 1000);
 
 export { countdownTimer }
 

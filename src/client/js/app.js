@@ -4,47 +4,42 @@ import { countdownTimer } from './countdown'
 const baseUrl = "http://api.geonames.org/searchJSON?q=";
 const baseUrlWeather = "http://api.weatherbit.io/v2.0/forecast/daily?";
 const baseUrlImage = "https://pixabay.com/api/?";
-const USERNAME = process.env.USERNAME; // Geonames
-const API_KEY_1 = process.env.API_KEY_1; // WeatherBit 
-const API_KEY_2 = process.env.API_KEY_2 // Pixabay 
+const USERNAME = "hugonin_"; // Geonames
+const API_KEY_1 = "7ef1e110e00c49abb914bc08eddf17c6"; // WeatherBit 
+const API_KEY_2 = "5463371-fdf4fcef6ada1fce8e8a016d5" // Pixabay 
 
 
-// Event listener to add function to existing HTML DOM element 
-//document.getElementById('generate').addEventListener('click', performAction);
 
 // Function called by event listener
 function performAction(event) {
     event.preventDefault()
 
-    let newCity = document.getElementById("city").value;
+    countdownTimer();
+    let cityName = document.getElementById("city").value;
 
- 
-    if (newCity == "" ) {
+    if (cityName == "" ) {
         alert("Please provide a city name");
         return false;
       }
 
-        getData(baseUrl, newCity, USERNAME)
+        getCityInfo(baseUrl, cityName, USERNAME)
             .then(function(data) {
-                const lat = data.geonames[0].lat;
-                const lng = data.geonames[0].lng;
-                const country = data.geonames[0].countryName;
+                const cityLat = data.geonames[0].lat;
+                const cityLong = data.geonames[0].lng;
                 console.log(data);
-                //Add data to POST request
-                postData('/add', { lat, lng, country, newCity });
-                countdownTimer();
-                setInterval(countdownTimer, 1000);
-                getWeatherData(baseUrlWeather, lat, lng, API_KEY_1)
-                    .then(function(weatherData) {
-                    console.log(weatherData);
-                    postData('/add', { temp: weatherData.data[0].temp, date: weatherData.data[0].datetime });
-                })
-                getImage(baseUrlImage, newCity, API_KEY_2)
-                    .then(function(imageData) {
-                    console.log(imageData);
-                    postData('/add', { image: imageData.hits[0].webformatURL });
-                })
+                 //Add data to POST request
+                postData('/add', { cityLat, cityLong, cityName });
+                getWeather(baseUrlWeather, cityLat, cityLong, API_KEY_1)
+                getImage(baseUrlImage, cityName, API_KEY_2)
             }) 
+            .then(function(weatherData) {
+                console.log(weatherData);
+                postData('/add', { temp: weatherData.data[0].temp, description: weatherData.data[0].weather.description, date: weatherData.data[0].datetime });
+                })
+            .then(function(imageData) {
+                console.log(imageData);
+                postData('/add', { image: imageData.hits[0].webformatURL });
+                })         
             .then(()=> {
                 updateUI();
                 })
@@ -53,7 +48,7 @@ function performAction(event) {
 
 
 // asynchronous function to fetch the data from the geonames app endpoint  
-const getData = async (url, city, username) => {
+const getCityInfo = async (url, city, username) => {
 
     const res = await fetch(url + `${city}&maxRows=1&username=${username}`)
     try {
@@ -66,7 +61,7 @@ const getData = async (url, city, username) => {
 }
 
 // asynchronous function to fetch the data from the weatherBit app endpoint  
-const getWeatherData = async (url, lat, lon, key ) => {
+const getWeather = async (url, lat, lon, key ) => {
 
     const res = await fetch(url + `&lat=${lat}&lon=${lon}&key=${key}`)
     try {
@@ -120,13 +115,12 @@ const updateUI = async () => {
     const request = await fetch('/all');
     try{
         const allData = await request.json();
-        document.getElementById('lat').innerHTML = `Latitude: ${allData.lat}`;
-        document.getElementById('lng').innerHTML = `Longitude: ${allData.lng} `;
-        document.getElementById('country').innerHTML = `Country: ${allData.countryName}`;
-        document.getElementById('temp').innerHTML = `Temperature: ${allData.temp}`;
+        document.getElementById('city').innerHTML = `City: ${allData.cityName}`;
+        document.getElementById('country').innerHTML = `Country: ${allData.country}`;
         document.getElementById('date').innerHTML = `Date: ${allData.date}`;
+        document.getElementById('temp').innerHTML = `Temperature: ${allData.temp}`;
+        document.getElementById('description').innerHTML = `Description: ${allData.description}`;
         document.getElementById('placeimage').innerHTML = `<img src="${allData.image}" alt="Place image">`;
-  
     }catch(error){
       console.log("error", error);
     }
