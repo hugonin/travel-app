@@ -1,5 +1,5 @@
 import { performAction } from './js/app'
-import { countdownTimer } from './js/countdown'
+import {countdownTimer } from './js/countdown'
 
 import './styles/style.scss'
 
@@ -7,6 +7,6 @@ import './styles/style.scss'
 document.getElementById('generate').addEventListener('click', performAction);
 
 export { 
-    performAction,
-    countdownTimer
+    performAction, 
+    countdownTimer  
  }

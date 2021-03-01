@@ -95,8 +95,9 @@ var Client =
 // Imports
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+___CSS_LOADER_EXPORT___.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.i, "*{box-sizing:border-box}body{background:#fffff8;font-family:-apple-system, BlinkMacSystemFont, sans-serif}#app{display:grid;grid-auto-rows:minmax(150px, auto);background:#f23557;color:#f0d43a;justify-content:center;grid-gap:1em;font-size:20px;font-family:'Oswald', sans-serif}.holder{background:white;padding:1em;text-align:left;margin-top:2em;margin-bottom:2em}@media (min-width: 600px){button{display:inline-block;width:unset;padding:1em 4em}}@media (min-width: 950px){.holder{padding:2em;width:900px;margin:2em auto}h2{font-size:1.7em}}.entry{background:rgba(59,74,107,0.4)}label{display:block;font-weight:bold;margin-top:1.5em;margin-bottom:.5em}input[type=text],select,textarea{font-family:'Oswald', sans-serif;width:100%;padding:1em;border-radius:.2em;border:1px solid #ACACAC;background:#22b2da;color:#1B1820}input[type=text]:focus,textarea:focus{font-family:'Oswald', sans-serif;outline:3px solid #ACACAC}button{display:block;width:100%;padding:1em;text-align:center;text-decoration:none;color:#f0d43a;background:#3b4a6b;margin-top:1.5em;font-weight:bold;font-size:1.2em;border-radius:.2em}h1{font-size:36px;font-weight:bold}input:focus,select:focus,textarea:focus,button:focus{outline:none}::placeholder{color:#f0d43a;font-family:'Oswald', sans-serif}:-ms-input-placeholder{color:#f0d43a;font-family:'Oswald', sans-serif}::-ms-input-placeholder{color:#f0d43a;font-family:'Oswald', sans-serif}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.i, "*{box-sizing:border-box}body{margin:0;font-family:'Montserrat', sans-serif;font-size:1rem;color:#404040;line-height:1.6}img{max-width:100%}h1{font-size:1.5rem;position:relative;margin-top:1em}h1,h2,strong{font-weight:700}h1:before{content:'';position:absolute;width:30%;height:7px;top:-20px;left:33%;background-color:#7A4900}.info-title-country,.info-title-date{grid-column:2 / -2;color:#000;text-align:center}.info-title-country{font-size:2rem;margin-bottom:.5em;justify-self:center}.info-title-country::after{content:'';display:block;width:100%;height:30px;background:#47946E;margin-top:-40px;margin-left:15px}.info-title-date{margin:.5em 0 3em;font-size:1.125rem}p{font-size:.9rem;line-height:1.4em;width:90%;margin:0 auto 2em}.btn{padding:.5em 1.75em;font-weight:700;margin-top:.5em;text-decoration:none;border:0;cursor:pointer}.btn-primary{background:#7A4900;color:#fff;justify-self:start}.btn-primary:hover,.btn-primary:focus{filter:brightness(120%)}.btn-form{justify-self:end}.cta{display:block;padding:.7em;margin-bottom:1em;background-color:#7A4900;color:white;white-space:nowrap}.outline{background:none;border:2px solid #47946E;color:black}main{padding:1em;text-align:center}.main-grid{display:grid;grid-template-columns:minmax(1em, 1fr) minmax(0px, 500px) minmax(1em, 1fr);grid-column-gap:1em}@media (min-width: 600px){.main-grid{grid-template-columns:1fr 1fr}}header{display:flex;padding:1em;justify-content:space-between}a{color:#7A4900;text-decoration:none;font-weight:bold}.logo{text-transform:uppercase}.menu{width:1.5em;cursor:pointer}ul{position:fixed;top:0;left:0;background:white;height:100vh;width:100%;padding:0;margin:0;list-style:none;display:none;place-content:center;z-index:1}ul li a{color:black;padding:2em;display:block;font-size:1.4rem;margin-left:-4em}.exit svg{width:1.5em;position:absolute;top:1em;right:2em;cursor:pointer}.active a{color:#217C4f}.open-nav{display:grid}.main-template{padding:1em .5em}.main-template>*{grid-column:1 / -1}.secondary-info{margin-top:1em}@media (min-width: 600px){.main-image{grid-column:1 / 2}.main-info{grid-column:1 / span 2;grid-row:span 2}.secondary-info{display:grid;padding:1em 2em;grid-column-gap:2em;grid-template-areas:\"img  title\" \"img  date\" \"img  btn\" \"img  countdown\" \"img  temp\" \"img  description\";grid-template-columns:1fr 1fr}#placeimage{grid-area:img}#country{grid-area:title;justify-self:center}#date{grid-area:date}#btn-container{grid-area:btn;justify-self:center;align-self:center}#countdown{grid-area:countdown}#temp{grid-area:temp}#description{grid-area:description}}.form{display:grid}label{font-weight:700}input,textarea{margin-bottom:.5em;padding:.4em;font-family:inherit}textarea{resize:none;height:100px}@media (min-width: 600px){.form{grid-template-columns:repeat(2, 1fr);grid-auto-flow:dense;grid-column-gap:1em}.city-label,.city-input{grid-column:1}.date-label,.date-input{grid-column:2}.btn-form{grid-column:2}}@media (min-width: 600px){body{font-size:18px}.menu,.exit{display:none}ul{display:flex;background:none;height:unset;position:unset;text-transform:uppercase}ul li a{font-size:.9em;margin-left:unset;padding:0 .5rem}h1{font-size:2.5em}p{font-size:1em}.btn-container{display:flex;justify-content:center}.cta{padding:.7em 1.2em}.outline{margin-left:1em}}@media (min-width: 800px){body{background:white}main{text-align:left;width:90%;margin-left:2em}p{width:100%}.btn-container{justify-content:left}h1:before{width:10%;left:0}.content-wrapper{display:flex}}\n", ""]);
 // Exports
 /* harmony default export */ __webpack_exports__["a"] = (___CSS_LOADER_EXPORT___);
 
@@ -461,36 +462,38 @@ __webpack_require__.d(__webpack_exports__, "performAction", function() { return 
 __webpack_require__.d(__webpack_exports__, "countdownTimer", function() { return /* reexport */ countdownTimer; });
 
 // CONCATENATED MODULE: ./src/client/js/countdown.js
+const second = 1000;
+const minute = second * 60;
+const hour = minute * 60;
+const day = hour * 24;
+
+
 
 function countdownTimer() {
-  let dateInput = document.getElementById("departure").value;
+  let dateInput = document.getElementById("date-picker").value;
   let currentDate =  new Date(); 
   let departureDate = new Date(dateInput); 
-  const difference =  +departureDate - +currentDate // difference is cast as an integer and calculated in milliseconds
-  let remaining = "Time's up!"
 
-  if (difference > 0) {
-    const parts = {
-       days : Math.floor(difference / (1000 * 60 * 60 * 24)),
-       hours : Math.floor((difference / (1000 * 60 * 60)) % 24),
-       minutes : Math.floor((difference / 1000 / 60) % 60),
-       seconds : Math.floor((difference / 1000) % 60),
-    };
-    // The object is formatted into a string then the .map() method will iterate over each item
-    remaining = Object.keys(parts).map(part => {
-      //if there is no corresponding number, move on to the next unit of time and check again
-      if (!parts[part]) return;
-      return `${parts[part]} ${part}`;
-    }) .join(" ");
+    const difference = +departureDate - +currentDate;
+    let remaining = "Time's up!";
+
+    if (difference > 0) {
+        const parts = {
+            days : Math.floor(difference / day),
+            hours : Math.floor((difference / hour) % 24),
+            minutes : Math.floor((difference / minute) % 60),
+            seconds : Math.floor((difference / second) % 60),
+        };
+        remaining = Object.keys(parts).map(part => {
+            return `${parts[part]} ${part}`;
+         }).join(" ");
+    }
+
+document.getElementById("countdown").innerHTML = ` My trip is ${remaining} away`;
   }
-
-  document.getElementById("countdown").innerHTML = remaining;
-}
-
+  
 countdownTimer();
 setInterval(countdownTimer, 1000);
-
-
 
 
 // CONCATENATED MODULE: ./src/client/js/app.js
@@ -506,46 +509,42 @@ const API_KEY_2 = "5463371-fdf4fcef6ada1fce8e8a016d5" // Pixabay
 
 
 
-// Function called by event listener
-function performAction(event) {
+async function performAction(event) {
     event.preventDefault()
 
-    countdownTimer();
-    let newCity = document.getElementById("city").value;
+    let cityName = document.getElementById("city").value;
+    let date = document.getElementById("date-picker").value;
 
-    if (newCity == "" ) {
-        alert("Please provide a city name");
-        return false;
-      }
+    const dLocation = await getCityInfo(baseUrl, cityName, USERNAME)
+    const cityUrl = await postData('/add', { cityLat: dLocation.geonames[0].lat, cityLong: dLocation.geonames[0].lng, city: cityName, country: dLocation.geonames[0].countryName, date: date })
+    const dWeather = await getWeather(baseUrlWeather, dLocation.geonames[0].lat, dLocation.geonames[0].lng, API_KEY_1)
+    const weatherUrl = await postData('/add', { temp: dWeather.data[0].temp, description: dWeather.data[0].weather.description, maxTemp: dWeather.data[0].max_temp, minTemp: dWeather.data[0].min_temp})
+    const dImage = await getImage(baseUrlImage, cityName, API_KEY_2)
+    const imageUrl = await postData('/add', { image: dImage.hits[0].webformatURL })
+    let urls = []
 
-        getData(baseUrl, newCity, USERNAME)
-            .then(function(data) {
-                const lat = data.geonames[0].lat;
-                const lng = data.geonames[0].lng;
-                const country = data.geonames[0].countryName;
-                console.log(data);
-                //Add data to POST request
-                postData('/add', { lat, lng, country, newCity });
-                getWeatherData(baseUrlWeather, lat, lng, API_KEY_1)
-                    .then(function(weatherData) {
-                    console.log(weatherData);
-                    postData('/add', { temp: weatherData.data[0].temp, description: weatherData.data[0].weather.description, date: weatherData.data[0].datetime });
-                })
-                getImage(baseUrlImage, newCity, API_KEY_2)
-                    .then(function(imageData) {
-                    console.log(imageData);
-                    postData('/add', { image: imageData.hits[0].webformatURL });
-                })
-            }) 
-            .then(()=> {
-                updateUI();
-                })
+
+    urls.push(cityUrl,weatherUrl,imageUrl)
+
+    async function logInOrder(urls) {
+        const dataPromises = urls.map(async url => {
+            const response = await fetch(url);
+            return response.data();
+        });
+
+        for (const dataPromise of dataPromises) {
+            console.log( await dataPromise)
+        }
+    }
+
+    updateUI();
          
 }
 
 
+
 // asynchronous function to fetch the data from the geonames app endpoint  
-const getData = async (url, city, username) => {
+const getCityInfo = async (url, city, username) => {
 
     const res = await fetch(url + `${city}&maxRows=1&username=${username}`)
     try {
@@ -558,7 +557,7 @@ const getData = async (url, city, username) => {
 }
 
 // asynchronous function to fetch the data from the weatherBit app endpoint  
-const getWeatherData = async (url, lat, lon, key ) => {
+const getWeather = async (url, lat, lon, key ) => {
 
     const res = await fetch(url + `&lat=${lat}&lon=${lon}&key=${key}`)
     try {
@@ -612,12 +611,17 @@ const updateUI = async () => {
     const request = await fetch('/all');
     try{
         const allData = await request.json();
-        document.getElementById('city').innerHTML = `City: ${allData.newCity}`;
-        document.getElementById('country').innerHTML = `Country: ${allData.country}`;
-        document.getElementById('date').innerHTML = `Date: ${allData.date}`;
-        document.getElementById('temp').innerHTML = `Temperature: ${allData.temp}`;
-        document.getElementById('description').innerHTML = `Description: ${allData.description}`;
-        document.getElementById('placeimage').innerHTML = `<img src="${allData.image}" alt="Place image">`;
+        document.getElementById('country').innerHTML = `<h2 class="info-title-country">My trip to: ${allData.city}, ${allData.country}</h2>`;
+        document.getElementById('date').innerHTML = ` <h2 class="info-title-date">Departing: ${allData.date}</h2> `;
+        document.getElementById('btn-container').innerHTML = 
+            `<div class="btn-container">
+                <a href="#" class="cta">Save</a>
+                <a href="#" class="cta outline">Remove</a>
+            </div>`
+        document.getElementById('countdown').innerHTML = `<p class="info-countdown">${allData.city}, ${allData.country} is </p> `;
+        document.getElementById('temp').innerHTML = `<p class="info-temp">Typical weather for then is: ${allData.temp}°C, Max: ${allData.maxTemp}°C, Min: ${allData.minTemp}°C</p>`;
+        document.getElementById('description').innerHTML = `<p class="info-description-fineprint">${allData.description}</p>`;
+        document.getElementById('placeimage').innerHTML = `<img class="main-image" src="${allData.image}" alt="image-of-the-city">`;
     }catch(error){
       console.log("error", error);
     }
