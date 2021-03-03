@@ -25,7 +25,8 @@ function countdownTimer() {
          }).join(" ");
     }
 
-document.getElementById("countdown").innerHTML = ` My trip is ${remaining} away`;
+    //document.getElementById("countdown").innerHTML = ` ${remaining}`;
+
   }
   
 countdownTimer();

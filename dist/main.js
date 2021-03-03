@@ -95,9 +95,9 @@ var Client =
 // Imports
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
-___CSS_LOADER_EXPORT___.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap);"]);
+___CSS_LOADER_EXPORT___.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Montserrat&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.i, "*{box-sizing:border-box}body{margin:0;font-family:'Montserrat', sans-serif;font-size:1rem;color:#404040;line-height:1.6}img{max-width:100%}h1{font-size:1.5rem;position:relative;margin-top:1em}h1,h2,strong{font-weight:700}h1:before{content:'';position:absolute;width:30%;height:7px;top:-20px;left:33%;background-color:#7A4900}.info-title-country,.info-title-date{grid-column:2 / -2;color:#000;text-align:center}.info-title-country{font-size:2rem;margin-bottom:.5em;justify-self:center}.info-title-country::after{content:'';display:block;width:100%;height:30px;background:#47946E;margin-top:-40px;margin-left:15px}.info-title-date{margin:.5em 0 3em;font-size:1.125rem}p{font-size:.9rem;line-height:1.4em;width:90%;margin:0 auto 2em}.btn{padding:.5em 1.75em;font-weight:700;margin-top:.5em;text-decoration:none;border:0;cursor:pointer}.btn-primary{background:#7A4900;color:#fff;justify-self:start}.btn-primary:hover,.btn-primary:focus{filter:brightness(120%)}.btn-form{justify-self:end}.cta{display:block;padding:.7em;margin-bottom:1em;background-color:#7A4900;color:white;white-space:nowrap}.outline{background:none;border:2px solid #47946E;color:black}main{padding:1em;text-align:center}.main-grid{display:grid;grid-template-columns:minmax(1em, 1fr) minmax(0px, 500px) minmax(1em, 1fr);grid-column-gap:1em}@media (min-width: 600px){.main-grid{grid-template-columns:1fr 1fr}}header{display:flex;padding:1em;justify-content:space-between}a{color:#7A4900;text-decoration:none;font-weight:bold}.logo{text-transform:uppercase}.menu{width:1.5em;cursor:pointer}ul{position:fixed;top:0;left:0;background:white;height:100vh;width:100%;padding:0;margin:0;list-style:none;display:none;place-content:center;z-index:1}ul li a{color:black;padding:2em;display:block;font-size:1.4rem;margin-left:-4em}.exit svg{width:1.5em;position:absolute;top:1em;right:2em;cursor:pointer}.active a{color:#217C4f}.open-nav{display:grid}.main-template{padding:1em .5em}.main-template>*{grid-column:1 / -1}.secondary-info{margin-top:1em}@media (min-width: 600px){.main-image{grid-column:1 / 2}.main-info{grid-column:1 / span 2;grid-row:span 2}.secondary-info{display:grid;padding:1em 2em;grid-column-gap:2em;grid-template-areas:\"img  title\" \"img  date\" \"img  btn\" \"img  countdown\" \"img  temp\" \"img  description\";grid-template-columns:1fr 1fr}#placeimage{grid-area:img}#country{grid-area:title;justify-self:center}#date{grid-area:date}#btn-container{grid-area:btn;justify-self:center;align-self:center}#countdown{grid-area:countdown}#temp{grid-area:temp}#description{grid-area:description}}.form{display:grid}label{font-weight:700}input,textarea{margin-bottom:.5em;padding:.4em;font-family:inherit}textarea{resize:none;height:100px}@media (min-width: 600px){.form{grid-template-columns:repeat(2, 1fr);grid-auto-flow:dense;grid-column-gap:1em}.city-label,.city-input{grid-column:1}.date-label,.date-input{grid-column:2}.btn-form{grid-column:2}}@media (min-width: 600px){body{font-size:18px}.menu,.exit{display:none}ul{display:flex;background:none;height:unset;position:unset;text-transform:uppercase}ul li a{font-size:.9em;margin-left:unset;padding:0 .5rem}h1{font-size:2.5em}p{font-size:1em}.btn-container{display:flex;justify-content:center}.cta{padding:.7em 1.2em}.outline{margin-left:1em}}@media (min-width: 800px){body{background:white}main{text-align:left;width:90%;margin-left:2em}p{width:100%}.btn-container{justify-content:left}h1:before{width:10%;left:0}.content-wrapper{display:flex}}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.i, ":root{--primary-color: #343F4D;--border-radius: 5px}html{box-sizing:border-box}body{background-color:var(--primary-color);background-image:url(\"data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23c5c5c5' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E\");font-family:'Montserrat', sans-serif}h1{color:white;padding:20px;background:rgba(0,0,0,0.5);border-radius:var(--border-radius);cursor:pointer;text-align:center;text-transform:uppercase;width:275px;margin:20px auto 10px;user-select:none}h1:hover{background:rgba(0,0,0,0.8)}.container{display:grid;grid-template-columns:1fr,1fr,1fr;justify-content:center;place-content:center}.item{background:rgba(0,0,0,0.5);color:white;border-radius:var(--border-radius);padding:40px;margin:20px;text-align:center;position:relative}.item:hover{background:rgba(0,0,0,0.6)}a{font-size:20px;font-weight:bold;text-transform:uppercase}a:link,a:visited{color:white;text-decoration:none}a:hover,a:active{text-decoration:underline}.fa-times{float:right;cursor:pointer;z-index:2}.city{margin-top:20px;margin-right:20px}.main-image{width:100%;height:auto;vertical-align:sub;margin-right:5px}.modal-container{background:rgba(0,0,0,0.6);display:none;position:fixed;top:0;left:0;right:0;bottom:0}.show-modal{display:flex;align-items:center;justify-content:center}.modal{background:#fff;box-shadow:0 0 10px rgba(0,0,0,0.8);max-width:95%;width:500px;animation:modalopen 1s}@keyframes modalopen{from{opacity:0}to{opacity:1}}.close-icon{float:right;color:white;font-size:24px;position:relative;top:-5px;right:5px;cursor:pointer}.modal-header{background:var(--primary-color);color:#fff;padding:15px}h3{margin:0}.modal-content{padding:20px;background:whitesmoke}.form-group{height:55px}.form-input{width:97%;padding:5px;border:2px solid var(--primary-color);border-radius:var(--border-radius);display:block;outline:none}.form-label{color:var(--primary-color);display:block}button{cursor:pointer;color:white;background:var(--primary-color);border:none;height:30px;width:100px;border-radius:var(--border-radius);margin-top:10px}button:hover{filter:brightness(110%)}button:focus{outline:none}@media (min-width: 480px) and (max-width: 1025px){.container{grid-template-columns:1fr}}@media (min-width: 600px) and (max-width: 1025px){.container{grid-template-columns:1fr  1fr}}@media (min-width: 1025px){.container{grid-template-columns:1fr 1fr 1fr}}\n", ""]);
 // Exports
 /* harmony default export */ __webpack_exports__["a"] = (___CSS_LOADER_EXPORT___);
 
@@ -460,6 +460,7 @@ __webpack_require__.r(__webpack_exports__);
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, "performAction", function() { return /* reexport */ performAction; });
 __webpack_require__.d(__webpack_exports__, "countdownTimer", function() { return /* reexport */ countdownTimer; });
+__webpack_require__.d(__webpack_exports__, "showModal", function() { return /* reexport */ showModal; });
 
 // CONCATENATED MODULE: ./src/client/js/countdown.js
 const second = 1000;
@@ -489,14 +490,29 @@ function countdownTimer() {
          }).join(" ");
     }
 
-document.getElementById("countdown").innerHTML = ` My trip is ${remaining} away`;
+    //document.getElementById("countdown").innerHTML = ` ${remaining}`;
+
   }
   
 countdownTimer();
 setInterval(countdownTimer, 1000);
 
 
+// CONCATENATED MODULE: ./src/client/js/showModal.js
+const showModal_modal = document.getElementById('modal');
+const modalShow = document.getElementById('show-modal');
+const modalClose = document.getElementById('close-modal');
+const cityNameEl = document.getElementById('city-name');
+
+// Show Modal, Focus on Input
+function showModal() {
+	showModal_modal.classList.add('show-modal');
+	cityNameEl.focus();
+}
+
+
 // CONCATENATED MODULE: ./src/client/js/app.js
+
 
 
 /* Global Variables */
@@ -507,28 +523,34 @@ const USERNAME = "hugonin_"; // Geonames
 const API_KEY_1 = "7ef1e110e00c49abb914bc08eddf17c6"; // WeatherBit 
 const API_KEY_2 = "5463371-fdf4fcef6ada1fce8e8a016d5" // Pixabay 
 
-
+const booktripsContainer = document.getElementById('booktrips-container');
+let booktrips = {};
 
 async function performAction(event) {
     event.preventDefault()
 
-    let cityName = document.getElementById("city").value;
+    let cityName = document.getElementById("city-name").value;
     let date = document.getElementById("date-picker").value;
+   // const booktripForm = document.getElementById("booktrip-form")
+   
 
     const dLocation = await getCityInfo(baseUrl, cityName, USERNAME)
     const cityUrl = await postData('/add', { cityLat: dLocation.geonames[0].lat, cityLong: dLocation.geonames[0].lng, city: cityName, country: dLocation.geonames[0].countryName, date: date })
     const dWeather = await getWeather(baseUrlWeather, dLocation.geonames[0].lat, dLocation.geonames[0].lng, API_KEY_1)
-    const weatherUrl = await postData('/add', { temp: dWeather.data[0].temp, description: dWeather.data[0].weather.description, maxTemp: dWeather.data[0].max_temp, minTemp: dWeather.data[0].min_temp})
+    const weatherUrl = await postData('/add', { temp: dWeather.data[0].temp, description: dWeather.data[0].weather.description, icon: dWeather.data[0].weather.icon, maxTemp: dWeather.data[0].max_temp, minTemp: dWeather.data[0].min_temp})
     const dImage = await getImage(baseUrlImage, cityName, API_KEY_2)
     const imageUrl = await postData('/add', { image: dImage.hits[0].webformatURL })
     let urls = []
 
 
     urls.push(cityUrl,weatherUrl,imageUrl)
+    //booktripForm.reset();
+    //cityName.focus();
 
     async function logInOrder(urls) {
         const dataPromises = urls.map(async url => {
             const response = await fetch(url);
+            console.log(response)
             return response.data();
         });
 
@@ -606,11 +628,91 @@ const postData = async ( url = '', data = {}) => {
 
 
 // Update UI function
+/*
 const updateUI = async () => {
   
     const request = await fetch('/all');
     try{
         const allData = await request.json();
+         // Remove all bookmark elements
+	   // booktripsContainer.textContent = '';
+	    // Build items
+	   // Object.keys(booktrips).forEach((id) => {
+
+		//const { city, country, date, image, temp, minTemp, maxTemp, description } = booktrips[id];
+		//console.log(city, country, date, image, temp, minTemp, maxTemp, description);
+		// Item
+        /*
+		const item = document.createElement('div');
+		item.classList.add('item');
+	
+		booktripsContainer.appendChild(item).innerHTML = `
+		<i class="fas fa-times close-icon" title= "Delete Bookmark" onclick="deleteBookmark('${id}')"></i>
+		<img class="main-image" src="${allData.image}" alt="image-of-the-city">
+		<h2 class="info-title-country">My trip to: ${allData.city},${allData.country}</h2>
+		<h3 class="info-title-date">Departing: ${allData.date}</h3>
+		<p class="info-countdown">${allData.city}, ${allData.country} is </p>
+		<p class="info-temp">Typical weather for then is: ${allData.temp}°C, Max: ${allData.maxTemp}°C, Min: ${allData.minTemp}°C</p>
+		<p class="info-description-fineprint">${allData.description}</p>
+		`;*/
+
+	//});
+        /*
+        const countryInfo = document.createElement('div');
+        countryInfo.classList.add('info-title-country');
+        countryInfo.innerHTML = `<h2>My trip to: ${allData.city}, ${allData.country}</h2>`;
+        const dateInfo = document.createElement('div');
+        dateInfo.classList.add('info-title-date');
+        dateInfo.innerHTML = ` <h2>Departing: ${allData.date}</h2> `;
+        const countdownInfo = document.createElement('div');
+        countdownInfo.classList.add('info-countdown');
+        countdownInfo.innerHTML = `<p>${allData.city}, ${allData.country} is </p> `;
+        const tempInfo = document.createElement('div');
+        tempInfo.classList.add('info-temp');
+        tempInfo.innerHTML = `<p>Typical weather for then is: ${allData.temp}°C, Max: ${allData.maxTemp}°C, Min: ${allData.minTemp}°C</p>`;
+        const descriptionInfo = document.createElement('div');
+        descriptionInfo.classList.add('info-description-fineprint');
+        descriptionInfo.innerHTML = `<p>${allData.description}</p>`;
+        const imageInfo = document.createElement('div');
+        imageInfo.classList.add('main-image');
+        document.getElementById('placeimage').innerHTML = `<img src="${allData.image}" alt="image-of-the-city">`;
+    }catch(error){
+      console.log("error", error);
+    }
+  }
+*/
+
+// Update UI function
+const updateUI = async () => {
+  
+    const request = await fetch('/all');
+    try{
+        const allData = await request.json();
+        // Remove all bookmark elements
+	    booktripsContainer.textContent = '';
+	    // Build items
+	   //Object.keys(booktrips).forEach((id) => {
+          // const { city, country, date, image, temp, minTemp, maxTemp, description } = booktrips[id];
+		  // console.log(city, country, date, image, temp, minTemp, maxTemp, description);
+		// Item
+        
+		    const item = document.createElement('div');
+		    item.classList.add('item');
+
+            booktripsContainer.appendChild(item).innerHTML = `
+            <i class="fas fa-times close-icon" title= "Delete Bookmark"></i>
+		    <img class="main-image" src="${allData.image}" alt="image-of-the-city">
+		    <h2 class="info-title-country">My trip to: ${allData.city},${allData.country}</h2>
+		    <h3 class="info-title-date">Departing: ${allData.date}</h3>
+		    <p class="info-countdown">${allData.city}, ${allData.country} is <span id="countdown">${countdownTimer()}</span></p>
+		    <p class="info-temp">Typical weather for then is: ${allData.temp}°C, Max: ${allData.maxTemp}°C, Min: ${allData.minTemp}°C</p>
+		    <p class="info-description-fineprint">${allData.description}<img height="50" width="50" alt="Weather API Icon" style src="https://www.weatherbit.io/static/img/icons/${allData.icon}.png"></p>
+		`
+      // });
+        
+	
+		
+        /*
         document.getElementById('country').innerHTML = `<h2 class="info-title-country">My trip to: ${allData.city}, ${allData.country}</h2>`;
         document.getElementById('date').innerHTML = ` <h2 class="info-title-date">Departing: ${allData.date}</h2> `;
         document.getElementById('btn-container').innerHTML = 
@@ -621,13 +723,13 @@ const updateUI = async () => {
         document.getElementById('countdown').innerHTML = `<p class="info-countdown">${allData.city}, ${allData.country} is </p> `;
         document.getElementById('temp').innerHTML = `<p class="info-temp">Typical weather for then is: ${allData.temp}°C, Max: ${allData.maxTemp}°C, Min: ${allData.minTemp}°C</p>`;
         document.getElementById('description').innerHTML = `<p class="info-description-fineprint">${allData.description}</p>`;
-        document.getElementById('placeimage').innerHTML = `<img class="main-image" src="${allData.image}" alt="image-of-the-city">`;
+        document.getElementById('placeimage').innerHTML = `<img class="main-image" src="${allData.image}" alt="image-of-the-city">`;*/
     }catch(error){
       console.log("error", error);
     }
   }
 
-
+  
     
 
 
@@ -658,8 +760,14 @@ var update = injectStylesIntoStyleTag_default()(style["a" /* default */], option
 
 
 
+
 // Event listener to add function to existing HTML DOM element 
 document.getElementById('generate').addEventListener('click', performAction);
+// Modal Event Listeners
+document.getElementById('show-modal').addEventListener('click', showModal);
+document.getElementById('close-modal').addEventListener('click', () => modal.classList.remove('show-modal'));
+window.addEventListener('click', (e) => (e.target === modal ? modal.classList.remove('show-modal') : false));
+
 
 
 

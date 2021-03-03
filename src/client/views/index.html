@@ -9,57 +9,34 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <a href="" class="logo">TravelPlan</a>
-
-        <nav>
-            <svg class="menu" id="menu-btn" viewBox="0 0 27.329 17">
-                <g transform="translate(-415.671 -19)">
-                    <line  x1="24.329" transform="translate(417.171 34.5)" fill="none" stroke="#000" stroke-linecap="round" stroke-width="3"/>
-                    <line x1="24.329" transform="translate(417.171 27.5)" fill="none" stroke="#000" stroke-linecap="round" stroke-width="3"/>
-                    <line x1="17" transform="translate(424.5 20.5)" fill="none" stroke="#000" stroke-linecap="round" stroke-width="3"/>
-                </g>
-            </svg>
-            <ul id="nav">
-                <li class="exit" id="exit-btn">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="48.968" height="48.968" viewBox="0 0 48.968 48.968">
-                        <g transform="translate(-378.092 -80.939)">
-                            <path id="Path_21" data-name="Path 21" d="M383,82l-46.847,46.847" transform="translate(43)" fill="none" stroke="#000" stroke-width="3"/>
-                            <path id="Path_22" data-name="Path 22" d="M336.153,82l46.673,46.673" transform="translate(43)" fill="none" stroke="#000" stroke-width="3"/>
-                        </g>
-                    </svg>
-                </li>
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#">Browse</a></li>
-                <li><a href="#">Cart</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main class="main-template main-grid">
-      <h1>Choose your trip!</h1>
-      <div class="main-info">
-        <form class="form" id="countdownForm" onsubmit="return Client.performAction(event)">
-          <label class="city-label" for="city">Enter Location here</label>  
-          <input class="city-input" type="text" id="city" placeholder="Where are you going to?">
-          <label class="date-label" for="date-picker">Select a Date</label>
-          <input class="date-input" type="date" id="date-picker">
-          <button class="btn btn-primary btn-form" id="generate" type="submit" value="Submit" onclick="return Client.performAction(event)" onsubmit="return Client.performAction(event)"> Generate </button>
-      </form>
-      </div>
-
-      <div class="secondary-info" id="travel-info">
-        <div id = "placeimage"></div>
-        <div id = "country"></div>
-        <div id = "date"></div>
-        <div id = "btn-container"></div>
-        <div id = "countdown"></div>
-        <div id = "temp"></div>
-        <div id = "description"></div>
-      </div>
-
-    </main> 
+    <!-- Open Modal -->
+    <h1 id="show-modal">Book a Trip</h1>
+    <!-- Booktrips Container -->
+    <div class="container" id="booktrips-container"></div>
+    <!-- Modal -->
+    <div class="modal-container" id="modal">
+         <div class="modal">
+             <i class="fas fa-times close-icon" id="close-modal"></i>
+             <div class="modal-header">
+                 <h3>Add a Trip</h3>
+             </div>
+             <div class="modal-content">
+                 <form class="form" id="booktrip-form" onsubmit="return Client.performAction(event)">
+                     <!-- City Name -->
+                     <div class="form-group">
+                         <label class="form-label" for="city-name">Enter Location here</label>  
+                         <input class="form-input" type="text" id="city-name" placeholder="Where are you going to?">
+                     </div>
+                     <!-- Date Select -->
+                     <div class="form-group">
+                         <label class="form-label" for="date-picker">Select a Date</label>
+                         <input class="form-input" type="date" id="date-picker">
+                     </div>
+                     <button id="generate" type="submit" value="Submit" onclick="return Client.performAction(event)" onsubmit="return Client.performAction(event)"> Save </button>
+                </form>
+             </div>
+         </div>
+     </div> 
     <!-- Script -->
     <script src="app.js" type="text/javascript"></script>
 </body>
