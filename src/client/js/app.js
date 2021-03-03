@@ -114,61 +114,6 @@ const postData = async ( url = '', data = {}) => {
 
 
 // Update UI function
-/*
-const updateUI = async () => {
-  
-    const request = await fetch('/all');
-    try{
-        const allData = await request.json();
-         // Remove all bookmark elements
-	   // booktripsContainer.textContent = '';
-	    // Build items
-	   // Object.keys(booktrips).forEach((id) => {
-
-		//const { city, country, date, image, temp, minTemp, maxTemp, description } = booktrips[id];
-		//console.log(city, country, date, image, temp, minTemp, maxTemp, description);
-		// Item
-        /*
-		const item = document.createElement('div');
-		item.classList.add('item');
-	
-		booktripsContainer.appendChild(item).innerHTML = `
-		<i class="fas fa-times close-icon" title= "Delete Bookmark" onclick="deleteBookmark('${id}')"></i>
-		<img class="main-image" src="${allData.image}" alt="image-of-the-city">
-		<h2 class="info-title-country">My trip to: ${allData.city},${allData.country}</h2>
-		<h3 class="info-title-date">Departing: ${allData.date}</h3>
-		<p class="info-countdown">${allData.city}, ${allData.country} is </p>
-		<p class="info-temp">Typical weather for then is: ${allData.temp}°C, Max: ${allData.maxTemp}°C, Min: ${allData.minTemp}°C</p>
-		<p class="info-description-fineprint">${allData.description}</p>
-		`;*/
-
-	//});
-        /*
-        const countryInfo = document.createElement('div');
-        countryInfo.classList.add('info-title-country');
-        countryInfo.innerHTML = `<h2>My trip to: ${allData.city}, ${allData.country}</h2>`;
-        const dateInfo = document.createElement('div');
-        dateInfo.classList.add('info-title-date');
-        dateInfo.innerHTML = ` <h2>Departing: ${allData.date}</h2> `;
-        const countdownInfo = document.createElement('div');
-        countdownInfo.classList.add('info-countdown');
-        countdownInfo.innerHTML = `<p>${allData.city}, ${allData.country} is </p> `;
-        const tempInfo = document.createElement('div');
-        tempInfo.classList.add('info-temp');
-        tempInfo.innerHTML = `<p>Typical weather for then is: ${allData.temp}°C, Max: ${allData.maxTemp}°C, Min: ${allData.minTemp}°C</p>`;
-        const descriptionInfo = document.createElement('div');
-        descriptionInfo.classList.add('info-description-fineprint');
-        descriptionInfo.innerHTML = `<p>${allData.description}</p>`;
-        const imageInfo = document.createElement('div');
-        imageInfo.classList.add('main-image');
-        document.getElementById('placeimage').innerHTML = `<img src="${allData.image}" alt="image-of-the-city">`;
-    }catch(error){
-      console.log("error", error);
-    }
-  }
-*/
-
-// Update UI function
 const updateUI = async () => {
   
     const request = await fetch('/all');
@@ -194,22 +139,7 @@ const updateUI = async () => {
 		    <p class="info-temp">Typical weather for then is: ${allData.temp}°C, Max: ${allData.maxTemp}°C, Min: ${allData.minTemp}°C</p>
 		    <p class="info-description-fineprint">${allData.description}<img height="50" width="50" alt="Weather API Icon" style src="https://www.weatherbit.io/static/img/icons/${allData.icon}.png"></p>
 		`
-      // });
-        
-	
-		
-        /*
-        document.getElementById('country').innerHTML = `<h2 class="info-title-country">My trip to: ${allData.city}, ${allData.country}</h2>`;
-        document.getElementById('date').innerHTML = ` <h2 class="info-title-date">Departing: ${allData.date}</h2> `;
-        document.getElementById('btn-container').innerHTML = 
-            `<div class="btn-container">
-                <a href="#" class="cta">Save</a>
-                <a href="#" class="cta outline">Remove</a>
-            </div>`
-        document.getElementById('countdown').innerHTML = `<p class="info-countdown">${allData.city}, ${allData.country} is </p> `;
-        document.getElementById('temp').innerHTML = `<p class="info-temp">Typical weather for then is: ${allData.temp}°C, Max: ${allData.maxTemp}°C, Min: ${allData.minTemp}°C</p>`;
-        document.getElementById('description').innerHTML = `<p class="info-description-fineprint">${allData.description}</p>`;
-        document.getElementById('placeimage').innerHTML = `<img class="main-image" src="${allData.image}" alt="image-of-the-city">`;*/
+
     }catch(error){
       console.log("error", error);
     }
