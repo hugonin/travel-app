@@ -11,7 +11,7 @@ function countdownTimer() {
   let departureDate = new Date(dateInput); 
 
     const difference = +departureDate - +currentDate;
-    let remaining = "Time's up!";
+    let remaining = "";
 
     if (difference > 0) {
         const parts = {
@@ -25,7 +25,7 @@ function countdownTimer() {
          }).join(" ");
     }
 
-    //document.getElementById("countdown").innerHTML = ` ${remaining}`;
+    document.getElementById("countdown").innerHTML = ` ${remaining}`;
 
   }
   

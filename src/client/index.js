@@ -4,6 +4,8 @@ import { showModal } from './js/showModal'
 
 import './styles/style.scss'
 
+const booktripForm = document.getElementById('booktrip-form');
+
 // Event listener to add function to existing HTML DOM element 
 document.getElementById('generate').addEventListener('click', performAction);
 // Modal Event Listeners
@@ -12,8 +14,9 @@ document.getElementById('close-modal').addEventListener('click', () => modal.cla
 window.addEventListener('click', (e) => (e.target === modal ? modal.classList.remove('show-modal') : false));
 
 
+
 export { 
     performAction, 
     countdownTimer,
-    showModal  
+    showModal,
  }

@@ -36,7 +36,6 @@ h1:hover {
 
 .container {
   display: grid;
-  grid-template-columns: (1fr, 1fr, 1fr);
   justify-content: center;
   place-content: center;
  }
@@ -94,6 +93,22 @@ a:active {
   height: auto;
   vertical-align: sub;
   margin-right: 5px;
+}
+
+.cta {
+  display: block;
+  padding: .7em;
+  margin-bottom: 1em;
+  background-color: var(--primary-color);
+  border-radius: var(--border-radius);
+  color: white;
+  white-space: nowrap;
+}
+
+.outline {
+  background: none;
+  border: 2px solid #c5c5c5;
+  color: black;
 }
 
 
@@ -203,23 +218,93 @@ button:focus {
 }*/
 
 
-@media(min-width: 480px) and (max-width: 1025px ) {
+@media screen and (min-width: 600px){
   .container {
-      grid-template-columns: 1fr ;
+      grid-template-columns: 1fr;
+  }
+  #info-countdown {
+    margin-top: 1em;
+    place-self: center;
+  }
+
+  .btn-container {
+    display: flex;
+    justify-content: center;
+  }
+  .cta {
+    padding: .7em 1.2em;
+  }
+  .outline {
+    margin-left: 1em;
   }
 
 }
 
-@media(min-width: 600px) and (max-width: 1025px ) {
+@media(min-width: 800px) {
   .container {
-      grid-template-columns: 1fr  1fr;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto;
+      grid-template-areas:
+        "image image destination"
+        "image image date"
+        ". . btn"
+        ". . countdown"
+        ". . timer" 
+        ". . temp"
+        ". . description"
+      ;
   }
 
+  #placeimage {
+    grid-area: image;
+  }
+
+  #country {
+    grid-area: destination;
+    place-self: center;
+  }
+
+  #date {
+    grid-area: date;
+    place-self: center;
+  }
+
+  #btn-container {
+    grid-area: btn;
+    margin: 1em;
+    place-self: center;
+
+  }
+
+  #info-countdown {
+    grid-area: countdown;
+    place-self: center;
+  }
+
+  #countdown {
+    grid-area: timer;
+  }
+
+  #temp {
+   grid-area: temp;
+  }
+
+  #description {
+    grid-area: description;
+  }
+
+  .btn-container {
+    justify-content: left;
+  }
+
+  
 }
 
+/*
 @media(min-width: 1025px) {
   .container {
-      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
   }
+  
 
-}
+}*/

@@ -97,7 +97,7 @@ var Client =
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 ___CSS_LOADER_EXPORT___.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Montserrat&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.i, ":root{--primary-color: #343F4D;--border-radius: 5px}html{box-sizing:border-box}body{background-color:var(--primary-color);background-image:url(\"data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23c5c5c5' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E\");font-family:'Montserrat', sans-serif}h1{color:white;padding:20px;background:rgba(0,0,0,0.5);border-radius:var(--border-radius);cursor:pointer;text-align:center;text-transform:uppercase;width:275px;margin:20px auto 10px;user-select:none}h1:hover{background:rgba(0,0,0,0.8)}.container{display:grid;grid-template-columns:1fr,1fr,1fr;justify-content:center;place-content:center}.item{background:rgba(0,0,0,0.5);color:white;border-radius:var(--border-radius);padding:40px;margin:20px;text-align:center;position:relative}.item:hover{background:rgba(0,0,0,0.6)}a{font-size:20px;font-weight:bold;text-transform:uppercase}a:link,a:visited{color:white;text-decoration:none}a:hover,a:active{text-decoration:underline}.fa-times{float:right;cursor:pointer;z-index:2}.city{margin-top:20px;margin-right:20px}.main-image{width:100%;height:auto;vertical-align:sub;margin-right:5px}.modal-container{background:rgba(0,0,0,0.6);display:none;position:fixed;top:0;left:0;right:0;bottom:0}.show-modal{display:flex;align-items:center;justify-content:center}.modal{background:#fff;box-shadow:0 0 10px rgba(0,0,0,0.8);max-width:95%;width:500px;animation:modalopen 1s}@keyframes modalopen{from{opacity:0}to{opacity:1}}.close-icon{float:right;color:white;font-size:24px;position:relative;top:-5px;right:5px;cursor:pointer}.modal-header{background:var(--primary-color);color:#fff;padding:15px}h3{margin:0}.modal-content{padding:20px;background:whitesmoke}.form-group{height:55px}.form-input{width:97%;padding:5px;border:2px solid var(--primary-color);border-radius:var(--border-radius);display:block;outline:none}.form-label{color:var(--primary-color);display:block}button{cursor:pointer;color:white;background:var(--primary-color);border:none;height:30px;width:100px;border-radius:var(--border-radius);margin-top:10px}button:hover{filter:brightness(110%)}button:focus{outline:none}@media (min-width: 480px) and (max-width: 1025px){.container{grid-template-columns:1fr}}@media (min-width: 600px) and (max-width: 1025px){.container{grid-template-columns:1fr  1fr}}@media (min-width: 1025px){.container{grid-template-columns:1fr 1fr 1fr}}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.i, ":root{--primary-color: #343F4D;--border-radius: 5px}html{box-sizing:border-box}body{background-color:var(--primary-color);background-image:url(\"data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23c5c5c5' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E\");font-family:'Montserrat', sans-serif}h1{color:white;padding:20px;background:rgba(0,0,0,0.5);border-radius:var(--border-radius);cursor:pointer;text-align:center;text-transform:uppercase;width:275px;margin:20px auto 10px;user-select:none}h1:hover{background:rgba(0,0,0,0.8)}.container{display:grid;justify-content:center;place-content:center}.item{background:rgba(0,0,0,0.5);color:white;border-radius:var(--border-radius);padding:40px;margin:20px;text-align:center;position:relative}.item:hover{background:rgba(0,0,0,0.6)}a{font-size:20px;font-weight:bold;text-transform:uppercase}a:link,a:visited{color:white;text-decoration:none}a:hover,a:active{text-decoration:underline}.fa-times{float:right;cursor:pointer;z-index:2}.city{margin-top:20px;margin-right:20px}.main-image{width:100%;height:auto;vertical-align:sub;margin-right:5px}.cta{display:block;padding:.7em;margin-bottom:1em;background-color:var(--primary-color);border-radius:var(--border-radius);color:white;white-space:nowrap}.outline{background:none;border:2px solid #c5c5c5;color:black}.modal-container{background:rgba(0,0,0,0.6);display:none;position:fixed;top:0;left:0;right:0;bottom:0}.show-modal{display:flex;align-items:center;justify-content:center}.modal{background:#fff;box-shadow:0 0 10px rgba(0,0,0,0.8);max-width:95%;width:500px;animation:modalopen 1s}@keyframes modalopen{from{opacity:0}to{opacity:1}}.close-icon{float:right;color:white;font-size:24px;position:relative;top:-5px;right:5px;cursor:pointer}.modal-header{background:var(--primary-color);color:#fff;padding:15px}h3{margin:0}.modal-content{padding:20px;background:whitesmoke}.form-group{height:55px}.form-input{width:97%;padding:5px;border:2px solid var(--primary-color);border-radius:var(--border-radius);display:block;outline:none}.form-label{color:var(--primary-color);display:block}button{cursor:pointer;color:white;background:var(--primary-color);border:none;height:30px;width:100px;border-radius:var(--border-radius);margin-top:10px}button:hover{filter:brightness(110%)}button:focus{outline:none}@media screen and (min-width: 600px){.container{grid-template-columns:1fr}#info-countdown{margin-top:1em;place-self:center}.btn-container{display:flex;justify-content:center}.cta{padding:.7em 1.2em}.outline{margin-left:1em}}@media (min-width: 800px){.container{grid-template-columns:repeat(3, 1fr);grid-template-rows:auto;grid-template-areas:\"image image destination\" \"image image date\" \". . btn\" \". . countdown\" \". . timer\"  \". . temp\" \". . description\"}#placeimage{grid-area:image}#country{grid-area:destination;place-self:center}#date{grid-area:date;place-self:center}#btn-container{grid-area:btn;margin:1em;place-self:center}#info-countdown{grid-area:countdown;place-self:center}#countdown{grid-area:timer}#temp{grid-area:temp}#description{grid-area:description}.btn-container{justify-content:left}}\n", ""]);
 // Exports
 /* harmony default export */ __webpack_exports__["a"] = (___CSS_LOADER_EXPORT___);
 
@@ -476,7 +476,7 @@ function countdownTimer() {
   let departureDate = new Date(dateInput); 
 
     const difference = +departureDate - +currentDate;
-    let remaining = "Time's up!";
+    let remaining = "";
 
     if (difference > 0) {
         const parts = {
@@ -490,7 +490,7 @@ function countdownTimer() {
          }).join(" ");
     }
 
-    //document.getElementById("countdown").innerHTML = ` ${remaining}`;
+    document.getElementById("countdown").innerHTML = ` ${remaining}`;
 
   }
   
@@ -515,6 +515,7 @@ function showModal() {
 
 
 
+
 /* Global Variables */
 const baseUrl = "http://api.geonames.org/searchJSON?q=";
 const baseUrlWeather = "http://api.weatherbit.io/v2.0/forecast/daily?";
@@ -524,14 +525,12 @@ const API_KEY_1 = "7ef1e110e00c49abb914bc08eddf17c6"; // WeatherBit
 const API_KEY_2 = "5463371-fdf4fcef6ada1fce8e8a016d5" // Pixabay 
 
 const booktripsContainer = document.getElementById('booktrips-container');
-let booktrips = {};
 
 async function performAction(event) {
     event.preventDefault()
 
     let cityName = document.getElementById("city-name").value;
     let date = document.getElementById("date-picker").value;
-   // const booktripForm = document.getElementById("booktrip-form")
    
 
     const dLocation = await getCityInfo(baseUrl, cityName, USERNAME)
@@ -540,12 +539,10 @@ async function performAction(event) {
     const weatherUrl = await postData('/add', { temp: dWeather.data[0].temp, description: dWeather.data[0].weather.description, icon: dWeather.data[0].weather.icon, maxTemp: dWeather.data[0].max_temp, minTemp: dWeather.data[0].min_temp})
     const dImage = await getImage(baseUrlImage, cityName, API_KEY_2)
     const imageUrl = await postData('/add', { image: dImage.hits[0].webformatURL })
+  
     let urls = []
 
-
     urls.push(cityUrl,weatherUrl,imageUrl)
-    //booktripForm.reset();
-    //cityName.focus();
 
     async function logInOrder(urls) {
         const dataPromises = urls.map(async url => {
@@ -558,9 +555,7 @@ async function performAction(event) {
             console.log( await dataPromise)
         }
     }
-
-    updateUI();
-         
+  updateUI();
 }
 
 
@@ -607,7 +602,7 @@ const getImage = async (url, city, key) => {
 
 
 // Post Route
-const postData = async ( url = '', data = {}) => {
+const postData = async (url = '', data = {}) => {
     const response = await fetch(url, {
         method: 'POST', 
         credentials: 'same-origin', 
@@ -624,95 +619,17 @@ const postData = async ( url = '', data = {}) => {
       } catch(error) {
       console.log("error", error);
       }
-};
+}
 
 
-// Update UI function
-/*
+//Update thr UI
+
 const updateUI = async () => {
-  
+
     const request = await fetch('/all');
     try{
         const allData = await request.json();
-         // Remove all bookmark elements
-	   // booktripsContainer.textContent = '';
-	    // Build items
-	   // Object.keys(booktrips).forEach((id) => {
-
-		//const { city, country, date, image, temp, minTemp, maxTemp, description } = booktrips[id];
-		//console.log(city, country, date, image, temp, minTemp, maxTemp, description);
-		// Item
-        /*
-		const item = document.createElement('div');
-		item.classList.add('item');
-	
-		booktripsContainer.appendChild(item).innerHTML = `
-		<i class="fas fa-times close-icon" title= "Delete Bookmark" onclick="deleteBookmark('${id}')"></i>
-		<img class="main-image" src="${allData.image}" alt="image-of-the-city">
-		<h2 class="info-title-country">My trip to: ${allData.city},${allData.country}</h2>
-		<h3 class="info-title-date">Departing: ${allData.date}</h3>
-		<p class="info-countdown">${allData.city}, ${allData.country} is </p>
-		<p class="info-temp">Typical weather for then is: ${allData.temp}°C, Max: ${allData.maxTemp}°C, Min: ${allData.minTemp}°C</p>
-		<p class="info-description-fineprint">${allData.description}</p>
-		`;*/
-
-	//});
-        /*
-        const countryInfo = document.createElement('div');
-        countryInfo.classList.add('info-title-country');
-        countryInfo.innerHTML = `<h2>My trip to: ${allData.city}, ${allData.country}</h2>`;
-        const dateInfo = document.createElement('div');
-        dateInfo.classList.add('info-title-date');
-        dateInfo.innerHTML = ` <h2>Departing: ${allData.date}</h2> `;
-        const countdownInfo = document.createElement('div');
-        countdownInfo.classList.add('info-countdown');
-        countdownInfo.innerHTML = `<p>${allData.city}, ${allData.country} is </p> `;
-        const tempInfo = document.createElement('div');
-        tempInfo.classList.add('info-temp');
-        tempInfo.innerHTML = `<p>Typical weather for then is: ${allData.temp}°C, Max: ${allData.maxTemp}°C, Min: ${allData.minTemp}°C</p>`;
-        const descriptionInfo = document.createElement('div');
-        descriptionInfo.classList.add('info-description-fineprint');
-        descriptionInfo.innerHTML = `<p>${allData.description}</p>`;
-        const imageInfo = document.createElement('div');
-        imageInfo.classList.add('main-image');
-        document.getElementById('placeimage').innerHTML = `<img src="${allData.image}" alt="image-of-the-city">`;
-    }catch(error){
-      console.log("error", error);
-    }
-  }
-*/
-
-// Update UI function
-const updateUI = async () => {
-  
-    const request = await fetch('/all');
-    try{
-        const allData = await request.json();
-        // Remove all bookmark elements
-	    booktripsContainer.textContent = '';
-	    // Build items
-	   //Object.keys(booktrips).forEach((id) => {
-          // const { city, country, date, image, temp, minTemp, maxTemp, description } = booktrips[id];
-		  // console.log(city, country, date, image, temp, minTemp, maxTemp, description);
-		// Item
-        
-		    const item = document.createElement('div');
-		    item.classList.add('item');
-
-            booktripsContainer.appendChild(item).innerHTML = `
-            <i class="fas fa-times close-icon" title= "Delete Bookmark"></i>
-		    <img class="main-image" src="${allData.image}" alt="image-of-the-city">
-		    <h2 class="info-title-country">My trip to: ${allData.city},${allData.country}</h2>
-		    <h3 class="info-title-date">Departing: ${allData.date}</h3>
-		    <p class="info-countdown">${allData.city}, ${allData.country} is <span id="countdown">${countdownTimer()}</span></p>
-		    <p class="info-temp">Typical weather for then is: ${allData.temp}°C, Max: ${allData.maxTemp}°C, Min: ${allData.minTemp}°C</p>
-		    <p class="info-description-fineprint">${allData.description}<img height="50" width="50" alt="Weather API Icon" style src="https://www.weatherbit.io/static/img/icons/${allData.icon}.png"></p>
-		`
-      // });
-        
-	
-		
-        /*
+        booktripsContainer.classList.add('item');
         document.getElementById('country').innerHTML = `<h2 class="info-title-country">My trip to: ${allData.city}, ${allData.country}</h2>`;
         document.getElementById('date').innerHTML = ` <h2 class="info-title-date">Departing: ${allData.date}</h2> `;
         document.getElementById('btn-container').innerHTML = 
@@ -720,16 +637,18 @@ const updateUI = async () => {
                 <a href="#" class="cta">Save</a>
                 <a href="#" class="cta outline">Remove</a>
             </div>`
-        document.getElementById('countdown').innerHTML = `<p class="info-countdown">${allData.city}, ${allData.country} is </p> `;
+        document.getElementById('info-countdown').innerHTML = `${allData.city}, ${allData.country} is in: </p> `;
         document.getElementById('temp').innerHTML = `<p class="info-temp">Typical weather for then is: ${allData.temp}°C, Max: ${allData.maxTemp}°C, Min: ${allData.minTemp}°C</p>`;
-        document.getElementById('description').innerHTML = `<p class="info-description-fineprint">${allData.description}</p>`;
-        document.getElementById('placeimage').innerHTML = `<img class="main-image" src="${allData.image}" alt="image-of-the-city">`;*/
+        document.getElementById('description').innerHTML = `<p class="info-description-fineprint">${allData.description}<img height="50" width="50" alt="Weather API Icon" src="https://www.weatherbit.io/static/img/icons/${allData.icon}.png"></p>`;
+        document.getElementById('placeimage').innerHTML = `<img class="main-image" src="${allData.image}" alt="image-of-the-city">`;
+
     }catch(error){
       console.log("error", error);
     }
-  }
 
-  
+}
+
+
     
 
 
@@ -761,12 +680,15 @@ var update = injectStylesIntoStyleTag_default()(style["a" /* default */], option
 
 
 
+const booktripForm = document.getElementById('booktrip-form');
+
 // Event listener to add function to existing HTML DOM element 
 document.getElementById('generate').addEventListener('click', performAction);
 // Modal Event Listeners
 document.getElementById('show-modal').addEventListener('click', showModal);
 document.getElementById('close-modal').addEventListener('click', () => modal.classList.remove('show-modal'));
 window.addEventListener('click', (e) => (e.target === modal ? modal.classList.remove('show-modal') : false));
+
 
 
 
