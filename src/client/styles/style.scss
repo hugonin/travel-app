@@ -2,7 +2,7 @@
 
 :root {
  --primary-color: #343F4D;
-  --border-radius: 5px;
+  --border-radius: 0.5em;
 }
 
 html {
@@ -17,14 +17,14 @@ body {
 
 h1 {
   color: white;
-  padding: 20px;
+  padding: 1em;
   background: rgba(0, 0, 0, 0.5);
   border-radius: var(--border-radius);
   cursor: pointer;
   text-align: center;
   text-transform: uppercase;
   width: 275px;
-  margin: 20px auto 10px;
+  margin: 1.25em auto 0.625em;
   user-select: none;
 }
 
@@ -32,7 +32,7 @@ h1:hover {
   background: rgba(0, 0, 0, 0.8);
 }
 
-/* Bookmarks */
+/* Items Booktrips */
 
 .container {
   display: grid;
@@ -44,8 +44,8 @@ h1:hover {
   background: rgba(0, 0, 0, 0.5);
   color: white;
   border-radius: var(--border-radius);
-  padding: 40px;
-  margin: 20px;
+  padding: 2.5em;
+  margin: 1.25em;
   text-align: center;
   position: relative;
 }
@@ -55,7 +55,7 @@ h1:hover {
 }
 
 a {
-  font-size: 20px;
+  font-size: 1.25em;
   font-weight: bold;
   text-transform: uppercase;
 }
@@ -78,21 +78,14 @@ a:active {
 }
 
 .city {
-  margin-top: 20px;
-  margin-right: 20px;
+  margin: 1.25em 1.25em;
 }
 
 .main-image {
-  /*min-height: 250px;
-  object-fit: cover;
-  vertical-align: sub;
-  margin-right: 5px;
-  height: 250px;
-  width: 250px;*/
   width: 100%;
   height: auto;
   vertical-align: sub;
-  margin-right: 5px;
+  margin-right: .3125em;
 }
 
 .cta {
@@ -107,7 +100,7 @@ a:active {
 
 .outline {
   background: none;
-  border: 2px solid #c5c5c5;
+  border: .125em solid #c5c5c5;
   color: black;
 }
 
@@ -131,7 +124,7 @@ a:active {
 
 .modal {
   background: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 .625em rgba(0, 0, 0, 0.8);
   max-width: 95%;
   width: 500px;
   animation: modalopen 1s;
@@ -150,17 +143,17 @@ a:active {
 .close-icon {
   float: right;
   color: white;
-  font-size: 24px;
+  font-size: 1.5em;
   position: relative;
-  top: -5px;
-  right: 5px;
+  top: .1em;
+  right: .5em;
   cursor: pointer;
 }
 
 .modal-header {
   background: var(--primary-color);
   color: #fff;
-  padding: 15px;
+  padding: .25em;
 }
 
 h3 {
@@ -168,19 +161,19 @@ h3 {
 }
 
 .modal-content {
-  padding: 20px;
+  padding: 1.5em;
   background: whitesmoke;
 }
 
 /* Form */
 .form-group {
-  height: 55px;
+  height: 3.5em;
 }
 
 .form-input {
   width: 97%;
-  padding: 5px;
-  border: 2px solid var(--primary-color);
+  padding: .3125em;
+  border: .125em solid var(--primary-color);
   border-radius: var(--border-radius);
   display: block;
   outline: none;
@@ -196,10 +189,10 @@ button {
   color: white;
   background: var(--primary-color);
   border: none;
-  height: 30px;
+  height: 1.875em;
   width: 100px;
   border-radius: var(--border-radius);
-  margin-top: 10px;
+  margin-top: .625em;
 }
 
 button:hover {
@@ -209,14 +202,6 @@ button:hover {
 button:focus {
   outline: none;
 }
-
-/* Media Query: Large Smartphone (Vertical) */
-/*@media screen and (max-width: 600px) {
-  .container {
-    flex-direction: column;
-  }
-}*/
-
 
 @media screen and (min-width: 600px){
   .container {
@@ -300,11 +285,3 @@ button:focus {
   
 }
 
-/*
-@media(min-width: 1025px) {
-  .container {
-      grid-template-columns: 1fr 1fr;
-  }
-  
-
-}*/

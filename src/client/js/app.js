@@ -57,7 +57,7 @@ const getCityInfo = async (url, city, username) => {
     } catch(error) {
         console.log("error", error)
     }
-}
+};
 
 // asynchronous function to fetch the data from the weatherBit app endpoint  
 const getWeather = async (url, lat, lon, key ) => {
@@ -70,13 +70,13 @@ const getWeather = async (url, lat, lon, key ) => {
     } catch(error) {
         console.log("error", error)
     }
-}
+};
 
 
 // asynchronous function to fetch the data from the pixabay app endpoint  
 const getImage = async (url, city, key) => {
 
-    const res = await fetch(url + `&key=${key}&q=${city}&image_type=photo`)
+    const res = await fetch(url + `&key=${key}&q=${city}&image_type=all,photo,illustration`)
     try {
         const imageData = await res.json();
         console.log(imageData)
@@ -84,7 +84,7 @@ const getImage = async (url, city, key) => {
     } catch(error) {
         console.log("error", error)
     }
-}
+};
 
 
 // Post Route
@@ -105,7 +105,7 @@ const postData = async (url = '', data = {}) => {
       } catch(error) {
       console.log("error", error);
       }
-}
+};
 
 
 //Update thr UI
@@ -132,7 +132,7 @@ const updateUI = async () => {
       console.log("error", error);
     }
 
-}
+};
 
 
   export { 
