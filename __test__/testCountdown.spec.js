@@ -1,20 +1,18 @@
-import { countdownTimer } from '../src/client/js/countdown'
+// To run properly the test of the countdown timer we have to give a value to the dateInput variable in countdown.js file also to comment the line 29
 
 jest.useFakeTimers();
 
 
 describe("testing the countdown timer", () => {
-    test("Should call the done callback when the timer has finished counting", function() {
-        const progressCallbackSpy = jest.fn();
-        const doneCallbackSpy = jest.fn();
-        countdownTimer(1, progressCallbackSpy, doneCallbackSpy)
+    test('waits 1 second before ending the request', () => {
+        const countdownTimer = require('../src/client/js/countdown');
+      
+        countdownTimer();
+      
+        expect(setInterval).toHaveBeenCalledTimes(1);
+        expect(setInterval).toHaveBeenLastCalledWith(expect.any(Function), 1000);
+      });
 
-        jest.runTimersToTime(1000);
-          
-        expect(progressCallbackSpy.mock.calls.length).toBe(1);
-        const firstCall = progressCallbackSpy.mock.calls[0];
-        const firstCallArg = firstCall[0];
-        expect(firstCallArg).toBe(1);            
-    });
+
     
 });

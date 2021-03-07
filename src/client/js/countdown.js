@@ -25,11 +25,14 @@ function countdownTimer() {
          }).join(" ");
     }
 
-    document.getElementById("countdown").innerHTML = ` ${remaining}`;
+   document.getElementById("countdown").innerHTML = ` ${remaining}`;
 
   }
   
 countdownTimer();
 setInterval(countdownTimer, 1000);
+
+
+module.exports = countdownTimer;
 
 export { countdownTimer }

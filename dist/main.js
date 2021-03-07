@@ -602,7 +602,7 @@ const getImage = async (url, city, key) => {
 
 
 // Post Route
-const postData = async (url = '', data = {}) => {
+const postData = async (url = 'http://localhost:8081/add', data = {}) => {
     const response = await fetch(url, {
         method: 'POST', 
         credentials: 'same-origin', 
