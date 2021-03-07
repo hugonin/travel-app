@@ -18,6 +18,7 @@ const app = express();
 //Here we are configuring express to use body-parser as middle-ware.
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+module.exports = app
 
 // Cors for cross origin allowance
 app.use(cors());
@@ -32,6 +33,12 @@ app.get('/', function (req, res) {
 })
 
 app.get('/all', sendData);
+
+app.get('/', function(req,res) {
+    res.statusCode(200)
+})
+
+
 
 //Callback function to return the JS object created at the top of server code'
 function sendData(req,res) {
@@ -54,9 +61,10 @@ function addData(req, res) {
 
 const port = 8081;
 /* Spin up the server*/
-const server = app.listen(port, listening);
+const server = app.listen(port);
 
 //Debug
+
 function listening(){
     console.log(`server running`);
     console.log(`running on localhost: ${port}`);
