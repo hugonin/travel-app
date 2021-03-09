@@ -82,7 +82,7 @@ var Client =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 8);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -90,7 +90,7 @@ var Client =
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
 // Imports
 
@@ -104,6 +104,78 @@ ___CSS_LOADER_EXPORT___.push([module.i, ":root{--primary-color: #343F4D;--border
 
 /***/ }),
 /* 1 */
+/***/ (function(module, exports) {
+
+// Unique ID creation requires a high quality random # generator.  In the
+// browser this is a little complicated due to unknown quality of Math.random()
+// and inconsistent support for the `crypto` API.  We do the best we can via
+// feature-detection
+
+// getRandomValues needs to be invoked in a context where "this" is a Crypto
+// implementation. Also, find the complete implementation of crypto on IE11.
+var getRandomValues = (typeof(crypto) != 'undefined' && crypto.getRandomValues && crypto.getRandomValues.bind(crypto)) ||
+                      (typeof(msCrypto) != 'undefined' && typeof window.msCrypto.getRandomValues == 'function' && msCrypto.getRandomValues.bind(msCrypto));
+
+if (getRandomValues) {
+  // WHATWG crypto RNG - http://wiki.whatwg.org/wiki/Crypto
+  var rnds8 = new Uint8Array(16); // eslint-disable-line no-undef
+
+  module.exports = function whatwgRNG() {
+    getRandomValues(rnds8);
+    return rnds8;
+  };
+} else {
+  // Math.random()-based (RNG)
+  //
+  // If all else fails, use Math.random().  It's fast, but is of unspecified
+  // quality.
+  var rnds = new Array(16);
+
+  module.exports = function mathRNG() {
+    for (var i = 0, r; i < 16; i++) {
+      if ((i & 0x03) === 0) r = Math.random() * 0x100000000;
+      rnds[i] = r >>> ((i & 0x03) << 3) & 0xff;
+    }
+
+    return rnds;
+  };
+}
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports) {
+
+/**
+ * Convert array of 16 byte values to UUID string format of the form:
+ * XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+ */
+var byteToHex = [];
+for (var i = 0; i < 256; ++i) {
+  byteToHex[i] = (i + 0x100).toString(16).substr(1);
+}
+
+function bytesToUuid(buf, offset) {
+  var i = offset || 0;
+  var bth = byteToHex;
+  // join used to fix memory issue caused by concatenation: https://bugs.chromium.org/p/v8/issues/detail?id=3175#c4
+  return ([
+    bth[buf[i++]], bth[buf[i++]],
+    bth[buf[i++]], bth[buf[i++]], '-',
+    bth[buf[i++]], bth[buf[i++]], '-',
+    bth[buf[i++]], bth[buf[i++]], '-',
+    bth[buf[i++]], bth[buf[i++]], '-',
+    bth[buf[i++]], bth[buf[i++]],
+    bth[buf[i++]], bth[buf[i++]],
+    bth[buf[i++]], bth[buf[i++]]
+  ]).join('');
+}
+
+module.exports = bytesToUuid;
+
+
+/***/ }),
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -378,7 +450,7 @@ module.exports = function (list, options) {
 };
 
 /***/ }),
-/* 2 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -450,7 +522,171 @@ module.exports = function (cssWithMappingToString) {
 };
 
 /***/ }),
-/* 3 */
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var v1 = __webpack_require__(6);
+var v4 = __webpack_require__(7);
+
+var uuid = v4;
+uuid.v1 = v1;
+uuid.v4 = v4;
+
+module.exports = uuid;
+
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var rng = __webpack_require__(1);
+var bytesToUuid = __webpack_require__(2);
+
+// **`v1()` - Generate time-based UUID**
+//
+// Inspired by https://github.com/LiosK/UUID.js
+// and http://docs.python.org/library/uuid.html
+
+var _nodeId;
+var _clockseq;
+
+// Previous uuid creation time
+var _lastMSecs = 0;
+var _lastNSecs = 0;
+
+// See https://github.com/uuidjs/uuid for API details
+function v1(options, buf, offset) {
+  var i = buf && offset || 0;
+  var b = buf || [];
+
+  options = options || {};
+  var node = options.node || _nodeId;
+  var clockseq = options.clockseq !== undefined ? options.clockseq : _clockseq;
+
+  // node and clockseq need to be initialized to random values if they're not
+  // specified.  We do this lazily to minimize issues related to insufficient
+  // system entropy.  See #189
+  if (node == null || clockseq == null) {
+    var seedBytes = rng();
+    if (node == null) {
+      // Per 4.5, create and 48-bit node id, (47 random bits + multicast bit = 1)
+      node = _nodeId = [
+        seedBytes[0] | 0x01,
+        seedBytes[1], seedBytes[2], seedBytes[3], seedBytes[4], seedBytes[5]
+      ];
+    }
+    if (clockseq == null) {
+      // Per 4.2.2, randomize (14 bit) clockseq
+      clockseq = _clockseq = (seedBytes[6] << 8 | seedBytes[7]) & 0x3fff;
+    }
+  }
+
+  // UUID timestamps are 100 nano-second units since the Gregorian epoch,
+  // (1582-10-15 00:00).  JSNumbers aren't precise enough for this, so
+  // time is handled internally as 'msecs' (integer milliseconds) and 'nsecs'
+  // (100-nanoseconds offset from msecs) since unix epoch, 1970-01-01 00:00.
+  var msecs = options.msecs !== undefined ? options.msecs : new Date().getTime();
+
+  // Per 4.2.1.2, use count of uuid's generated during the current clock
+  // cycle to simulate higher resolution clock
+  var nsecs = options.nsecs !== undefined ? options.nsecs : _lastNSecs + 1;
+
+  // Time since last uuid creation (in msecs)
+  var dt = (msecs - _lastMSecs) + (nsecs - _lastNSecs)/10000;
+
+  // Per 4.2.1.2, Bump clockseq on clock regression
+  if (dt < 0 && options.clockseq === undefined) {
+    clockseq = clockseq + 1 & 0x3fff;
+  }
+
+  // Reset nsecs if clock regresses (new clockseq) or we've moved onto a new
+  // time interval
+  if ((dt < 0 || msecs > _lastMSecs) && options.nsecs === undefined) {
+    nsecs = 0;
+  }
+
+  // Per 4.2.1.2 Throw error if too many uuids are requested
+  if (nsecs >= 10000) {
+    throw new Error('uuid.v1(): Can\'t create more than 10M uuids/sec');
+  }
+
+  _lastMSecs = msecs;
+  _lastNSecs = nsecs;
+  _clockseq = clockseq;
+
+  // Per 4.1.4 - Convert from unix epoch to Gregorian epoch
+  msecs += 12219292800000;
+
+  // `time_low`
+  var tl = ((msecs & 0xfffffff) * 10000 + nsecs) % 0x100000000;
+  b[i++] = tl >>> 24 & 0xff;
+  b[i++] = tl >>> 16 & 0xff;
+  b[i++] = tl >>> 8 & 0xff;
+  b[i++] = tl & 0xff;
+
+  // `time_mid`
+  var tmh = (msecs / 0x100000000 * 10000) & 0xfffffff;
+  b[i++] = tmh >>> 8 & 0xff;
+  b[i++] = tmh & 0xff;
+
+  // `time_high_and_version`
+  b[i++] = tmh >>> 24 & 0xf | 0x10; // include version
+  b[i++] = tmh >>> 16 & 0xff;
+
+  // `clock_seq_hi_and_reserved` (Per 4.2.2 - include variant)
+  b[i++] = clockseq >>> 8 | 0x80;
+
+  // `clock_seq_low`
+  b[i++] = clockseq & 0xff;
+
+  // `node`
+  for (var n = 0; n < 6; ++n) {
+    b[i + n] = node[n];
+  }
+
+  return buf ? buf : bytesToUuid(b);
+}
+
+module.exports = v1;
+
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var rng = __webpack_require__(1);
+var bytesToUuid = __webpack_require__(2);
+
+function v4(options, buf, offset) {
+  var i = buf && offset || 0;
+
+  if (typeof(options) == 'string') {
+    buf = options === 'binary' ? new Array(16) : null;
+    options = null;
+  }
+  options = options || {};
+
+  var rnds = options.random || (options.rng || rng)();
+
+  // Per 4.4, set bits for version and `clock_seq_hi_and_reserved`
+  rnds[6] = (rnds[6] & 0x0f) | 0x40;
+  rnds[8] = (rnds[8] & 0x3f) | 0x80;
+
+  // Copy bytes to buffer, if provided
+  if (buf) {
+    for (var ii = 0; ii < 16; ++ii) {
+      buf[i + ii] = rnds[ii];
+    }
+  }
+
+  return buf || bytesToUuid(rnds);
+}
+
+module.exports = v4;
+
+
+/***/ }),
+/* 8 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -461,6 +697,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.d(__webpack_exports__, "performAction", function() { return /* reexport */ performAction; });
 __webpack_require__.d(__webpack_exports__, "countdownTimer", function() { return /* reexport */ countdownTimer; });
 __webpack_require__.d(__webpack_exports__, "showModal", function() { return /* reexport */ showModal; });
+__webpack_require__.d(__webpack_exports__, "create_UUID", function() { return /* reexport */ create_UUID; });
 
 // CONCATENATED MODULE: ./src/client/js/countdown.js
 const second = 1000;
@@ -490,12 +727,13 @@ function countdownTimer() {
          }).join(" ");
     }
 
-    document.getElementById("countdown").innerHTML = ` ${remaining}`;
+  // document.getElementById("countdown").innerHTML = ` ${remaining}`;
 
   }
   
 countdownTimer();
 setInterval(countdownTimer, 1000);
+
 
 
 // CONCATENATED MODULE: ./src/client/js/showModal.js
@@ -511,7 +749,23 @@ function showModal() {
 }
 
 
+// CONCATENATED MODULE: ./src/client/js/createId.js
+
+function create_UUID(){
+    // returns a unique id
+        var dt = new Date().getTime();
+        var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+            var r = (dt + Math.random()*16)%16 | 0;
+            dt = Math.floor(dt/16);
+            return (c=='x' ? r :(r&0x3|0x8)).toString(16);
+        });
+        return uuid;
+    }
+
+    
 // CONCATENATED MODULE: ./src/client/js/app.js
+
+
 
 
 
@@ -520,11 +774,18 @@ function showModal() {
 const baseUrl = "http://api.geonames.org/searchJSON?q=";
 const baseUrlWeather = "http://api.weatherbit.io/v2.0/forecast/daily?";
 const baseUrlImage = "https://pixabay.com/api/?";
+const baseUrlRestCountries = "https://restcountries.eu/rest/v2/name/";
 const USERNAME = "hugonin_"; // Geonames
 const API_KEY_1 = "7ef1e110e00c49abb914bc08eddf17c6"; // WeatherBit 
 const API_KEY_2 = "5463371-fdf4fcef6ada1fce8e8a016d5" // Pixabay 
-
+const { v4: uuidv4 } = __webpack_require__(5);
+uuidv4();
+const booktripForm = document.getElementById('booktrip-form');
 const booktripsContainer = document.getElementById('booktrips-container');
+let booktrips = {};
+//const remaining = countdownTimer();
+const app_currentId = create_UUID();
+let urls = [];
 
 async function performAction(event) {
     event.preventDefault()
@@ -537,12 +798,14 @@ async function performAction(event) {
     const cityUrl = await postData('/add', { cityLat: dLocation.geonames[0].lat, cityLong: dLocation.geonames[0].lng, city: cityName, country: dLocation.geonames[0].countryName, date: date })
     const dWeather = await getWeather(baseUrlWeather, dLocation.geonames[0].lat, dLocation.geonames[0].lng, API_KEY_1)
     const weatherUrl = await postData('/add', { temp: dWeather.data[0].temp, description: dWeather.data[0].weather.description, icon: dWeather.data[0].weather.icon, maxTemp: dWeather.data[0].max_temp, minTemp: dWeather.data[0].min_temp})
+    const dRestCountries = await getRestCountries(baseUrlRestCountries, dLocation.geonames[0].countryName)
+    const restCountriesUrl = await postData('/add', { population: dRestCountries.population})
     const dImage = await getImage(baseUrlImage, cityName, API_KEY_2)
     const imageUrl = await postData('/add', { image: dImage.hits[0].webformatURL })
   
-    let urls = []
+    
 
-    urls.push(cityUrl,weatherUrl,imageUrl)
+    urls.push(cityUrl, weatherUrl,imageUrl, restCountriesUrl)
 
     async function logInOrder(urls) {
         const dataPromises = urls.map(async url => {
@@ -555,7 +818,9 @@ async function performAction(event) {
             console.log( await dataPromise)
         }
     }
-  updateUI();
+  buildBooktrips();
+  fetchBooktrips();
+  storeBooktrip(event);
 }
 
 
@@ -590,7 +855,7 @@ const getWeather = async (url, lat, lon, key ) => {
 // asynchronous function to fetch the data from the pixabay app endpoint  
 const getImage = async (url, city, key) => {
 
-    const res = await fetch(url + `&key=${key}&q=${city}&image_type=all,photo,illustration`)
+    const res = await fetch(url + `&key=${key}&q=${city}&image_type=all,photo`)
     try {
         const imageData = await res.json();
         console.log(imageData)
@@ -600,9 +865,22 @@ const getImage = async (url, city, key) => {
     }
 };
 
+// asynchronous function to fetch data from REST countries API
+const getRestCountries = async (url, country) => {
+
+    const res = await fetch(url + `${country}`)
+    try {
+        const restData = await res.json();
+        console.log(restData)
+        return restData;
+    }catch(error) {
+        console.log("error", error)
+    }
+}
+
 
 // Post Route
-const postData = async (url = 'http://localhost:8081/add', data = {}) => {
+const postData = async (url = '', data = {}) => {
     const response = await fetch(url, {
         method: 'POST', 
         credentials: 'same-origin', 
@@ -613,8 +891,8 @@ const postData = async (url = 'http://localhost:8081/add', data = {}) => {
     });
     
     try {
-        const newData = await response.json();
-        console.log(newData);
+        const newData = await response;
+        console.log('Data received:', newData);
         return newData;
       } catch(error) {
       console.log("error", error);
@@ -622,38 +900,119 @@ const postData = async (url = 'http://localhost:8081/add', data = {}) => {
 };
 
 
-//Update thr UI
 
-const updateUI = async () => {
+const buildBooktrips = async () => {
 
     const request = await fetch('/all');
     try{
         const allData = await request.json();
-        booktripsContainer.classList.add('item');
-        document.getElementById('country').innerHTML = `<h2 class="info-title-country">My trip to: ${allData.city}, ${allData.country}</h2>`;
-        document.getElementById('date').innerHTML = ` <h2 class="info-title-date">Departing: ${allData.date}</h2> `;
-        document.getElementById('btn-container').innerHTML = 
-            `<div class="btn-container">
-                <a href="#" class="cta">Save</a>
-                <a href="#" class="cta outline">Remove</a>
-            </div>`
-        document.getElementById('info-countdown').innerHTML = `${allData.city}, ${allData.country} is in: </p> `;
-        document.getElementById('temp').innerHTML = `<p class="info-temp">Typical weather for then is: ${allData.temp}°C, Max: ${allData.maxTemp}°C, Min: ${allData.minTemp}°C</p>`;
-        document.getElementById('description').innerHTML = `<p class="info-description-fineprint">${allData.description}<img height="50" width="50" alt="Weather API Icon" src="https://www.weatherbit.io/static/img/icons/${allData.icon}.png"></p>`;
-        document.getElementById('placeimage').innerHTML = `<img class="main-image" src="${allData.image}" alt="image-of-the-city">`;
+        // Remove all booktrip elements
+	    booktripsContainer.textContent = '';
+	    // Build items
+	    Object.keys(booktrips).forEach((currentId) => {
 
+		    const { city, date } = booktrips[currentId];
+		    console.log(city, date);
+		    // Item
+		    const item = document.createElement('div');
+		    item.classList.add('item');
+
+		    booktripsContainer.appendChild(item).innerHTML = `
+		    <i class="fas fa-times close-icon" title= "Delete booktrip" onclick="${deleteBooktrip(currentId)}')"></i>
+		    <img class="main-image" src="${allData.image}" alt="image-of-the-city">
+		    <h2 class="info-title-country">My trip to: ${allData.city}, ${allData.country}</h2>
+		    <h3 class="info-title-date">Departing: ${allData.date}</h3>
+		    <p class="info-countdown">${allData.city}, ${allData.country} is in: <span id="countdown">  </span></p>
+		    <p class="info-temp">Typical weather for then is: ${allData.temp}°C, Max: ${allData.maxTemp}°C, Min: ${allData.minTemp}°C</p>
+		    <p class="info-description-fineprint">${allData.description}<img height="50" width="50" alt="Weather API Icon" src="https://www.weatherbit.io/static/img/icons/${allData.icon}.png"></p>
+		    `;
+
+	    });
+
+    }catch(error) {
+        console.log("error", error);
+    }
+	
+
+}
+
+const fetchBooktrips = async () => {
+
+    const request = await fetch('/all');
+    try{
+		const allData = await request.json();
+       // Get booktrips from localStorage if available
+		if (localStorage.getItem('booktrips')) {
+			booktrips = JSON.parse(localStorage.getItem('booktrips'));
+		} else {
+		// Create booktrips object in localStorage
+			const currentId = `${create_UUID()} `
+			booktrips[currentId] = {
+				city: '',
+				date: '',
+			}
+			localStorage.setItem('booktrips', JSON.stringify(booktrips));
+		}
+		buildBooktrips();
+    }catch(error){
+      console.log("error", error);
+    }
+}
+
+const storeBooktrip = async (e) => {
+
+    const request = await fetch('/all');
+	e.preventDefault();
+    let cityValue = document.getElementById("city-name").value;
+    let dateValue = document.getElementById("date-picker").value;
+	
+    try{
+        const allData = await request.json();
+		// Set booktrip object, add to array
+		const booktrip = {
+			city: cityValue,
+			date: dateValue,
+		};
+		booktrips[dateValue] = booktrip;
+		// Set booktrips in localStorage, fetch, reset input fields
+		localStorage.setItem('booktrips', JSON.stringify(booktrips));
+		fetchBooktrips();
+		booktripForm.reset();
+		document.getElementById("city-name").focus();
+    }catch(error){
+      console.log("error", error);
+    }
+}
+
+const deleteBooktrip = async (id) => {
+
+    const request = await fetch('/all');
+    try{
+        const allData = await request.json();
+		// Loop through the bookmarks array
+		if (booktrips[id]) {
+			delete booktrips[id]
+		}
+		// Update bookmarks array in localStorage, re-populate DOM
+		localStorage.setItem('booktrips', JSON.stringify(booktrips));
+		fetchBooktrips();
     }catch(error){
       console.log("error", error);
     }
 
-};
+}
 
+// Event Listener
+booktripForm.addEventListener('submit', storeBooktrip);
+
+// On Load, Fetch booktrips
+window.onload = fetchBooktrips();
 
     
 
 
 // EXTERNAL MODULE: ./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js
-var injectStylesIntoStyleTag = __webpack_require__(1);
+var injectStylesIntoStyleTag = __webpack_require__(3);
 var injectStylesIntoStyleTag_default = /*#__PURE__*/__webpack_require__.n(injectStylesIntoStyleTag);
 
 // EXTERNAL MODULE: ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/client/styles/style.scss
@@ -680,7 +1039,11 @@ var update = injectStylesIntoStyleTag_default()(style["a" /* default */], option
 
 
 
-const booktripForm = document.getElementById('booktrip-form');
+
+
+
+
+const client_booktripForm = document.getElementById('booktrip-form');
 
 // Event listener to add function to existing HTML DOM element 
 document.getElementById('generate').addEventListener('click', performAction);
@@ -688,6 +1051,7 @@ document.getElementById('generate').addEventListener('click', performAction);
 document.getElementById('show-modal').addEventListener('click', showModal);
 document.getElementById('close-modal').addEventListener('click', () => modal.classList.remove('show-modal'));
 window.addEventListener('click', (e) => (e.target === modal ? modal.classList.remove('show-modal') : false));
+
 
 
 

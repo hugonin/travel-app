@@ -1,6 +1,10 @@
 import { performAction } from './js/app'
 import {countdownTimer } from './js/countdown'
 import { showModal } from './js/showModal'
+import { create_UUID } from './js/createId'
+
+
+
 
 import './styles/style.scss'
 
@@ -15,8 +19,10 @@ window.addEventListener('click', (e) => (e.target === modal ? modal.classList.re
 
 
 
+
 export { 
     performAction, 
     countdownTimer,
     showModal,
+    create_UUID,
  }
