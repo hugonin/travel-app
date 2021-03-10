@@ -490,7 +490,7 @@ function countdownTimer() {
          }).join(" ");
     }
 
- // document.getElementById("countdown").innerHTML = ` ${remaining}`;
+  document.getElementById("countdown").innerHTML = ` ${remaining}`;
 
   }
   
