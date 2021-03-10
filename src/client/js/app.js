@@ -1,8 +1,5 @@
 import { countdownTimer } from './countdown'
 import { showModal } from './showModal'
-import { create_UUID } from './createId'
-
-
 
 /* Global Variables */
 const baseUrl = "http://api.geonames.org/searchJSON?q=";
@@ -12,13 +9,9 @@ const baseUrlRestCountries = "https://restcountries.eu/rest/v2/name/";
 const USERNAME = "hugonin_"; // Geonames
 const API_KEY_1 = "7ef1e110e00c49abb914bc08eddf17c6"; // WeatherBit 
 const API_KEY_2 = "5463371-fdf4fcef6ada1fce8e8a016d5" // Pixabay 
-const { v4: uuidv4 } = require('uuid');
-uuidv4();
-const booktripForm = document.getElementById('booktrip-form');
+
 const booktripsContainer = document.getElementById('booktrips-container');
-let booktrips = {};
-//const remaining = countdownTimer();
-const currentId = create_UUID();
+
 let urls = [];
 
 async function performAction(event) {
@@ -33,7 +26,7 @@ async function performAction(event) {
     const dWeather = await getWeather(baseUrlWeather, dLocation.geonames[0].lat, dLocation.geonames[0].lng, API_KEY_1)
     const weatherUrl = await postData('/add', { temp: dWeather.data[0].temp, description: dWeather.data[0].weather.description, icon: dWeather.data[0].weather.icon, maxTemp: dWeather.data[0].max_temp, minTemp: dWeather.data[0].min_temp})
     const dRestCountries = await getRestCountries(baseUrlRestCountries, dLocation.geonames[0].countryName)
-    const restCountriesUrl = await postData('/add', { population: dRestCountries.population})
+    const restCountriesUrl = await postData('/add', { currency: dRestCountries[0].currencies[0].name, language: dRestCountries[0].languages[0].nativeName, population: dRestCountries[0].population })
     const dImage = await getImage(baseUrlImage, cityName, API_KEY_2)
     const imageUrl = await postData('/add', { image: dImage.hits[0].webformatURL })
   
@@ -52,9 +45,7 @@ async function performAction(event) {
             console.log( await dataPromise)
         }
     }
-  buildBooktrips();
-  fetchBooktrips();
-  storeBooktrip(event);
+    updateUI()
 }
 
 
@@ -135,117 +126,43 @@ const postData = async (url = '', data = {}) => {
 
 
 
-const buildBooktrips = async () => {
+//Update the UI
+
+const updateUI = async () => {
 
     const request = await fetch('/all');
     try{
         const allData = await request.json();
-        // Remove all booktrip elements
-	    booktripsContainer.textContent = '';
-	    // Build items
-	    Object.keys(booktrips).forEach((currentId) => {
+        booktripsContainer.classList.add('item');
+        document.getElementById('country').innerHTML = `<h2 class="info-title-country">My trip to: ${allData.city}, ${allData.country}</h2>`;
+        document.getElementById('date').innerHTML = ` <h3 class="info-title-date">Departing: ${allData.date}</h3> `;
+        document.getElementById('btn-container').innerHTML = 
+            `<div class="btn-container">
+                <a href="#" class="cta">Save</a>
+                <a href="#" class="cta outline">Remove</a>
+            </div>`
+        document.getElementById('info-countdown').innerHTML = `${allData.city}, ${allData.country} is in: </p> `;
+        document.getElementById('temp').innerHTML = `<p class="info-temp">Typical weather for then is: ${allData.temp}°C, Max: ${allData.maxTemp}°C, Min: ${allData.minTemp}°C</p>`;
+        document.getElementById('description').innerHTML = `<p class="info-description-fineprint">${allData.description}<img height="50" width="50" alt="Weather API Icon" src="https://www.weatherbit.io/static/img/icons/${allData.icon}.png"></p>`;
+        document.getElementById('placeimage').innerHTML = `<img class="main-image" src="${allData.image}" alt="image-of-the-city">`;
+        document.getElementById('rest').innerHTML = 
+        `<div class="rest-container">
+            <p>Currency: ${allData.currency}</p>
+            <p>Language: ${allData.language}</p>
+            <p>Population: ${allData.population}</p>
+        </div>
+       `;
 
-		    const { city, date } = booktrips[currentId];
-		    console.log(city, date);
-		    // Item
-		    const item = document.createElement('div');
-		    item.classList.add('item');
-
-		    booktripsContainer.appendChild(item).innerHTML = `
-		    <i class="fas fa-times close-icon" title= "Delete booktrip" onclick="${deleteBooktrip(currentId)}')"></i>
-		    <img class="main-image" src="${allData.image}" alt="image-of-the-city">
-		    <h2 class="info-title-country">My trip to: ${allData.city}, ${allData.country}</h2>
-		    <h3 class="info-title-date">Departing: ${allData.date}</h3>
-		    <p class="info-countdown">${allData.city}, ${allData.country} is in: <span id="countdown">  </span></p>
-		    <p class="info-temp">Typical weather for then is: ${allData.temp}°C, Max: ${allData.maxTemp}°C, Min: ${allData.minTemp}°C</p>
-		    <p class="info-description-fineprint">${allData.description}<img height="50" width="50" alt="Weather API Icon" src="https://www.weatherbit.io/static/img/icons/${allData.icon}.png"></p>
-		    `;
-
-	    });
-
-    }catch(error) {
-        console.log("error", error);
-    }
-	
-
-}
-
-const fetchBooktrips = async () => {
-
-    const request = await fetch('/all');
-    try{
-		const allData = await request.json();
-       // Get booktrips from localStorage if available
-		if (localStorage.getItem('booktrips')) {
-			booktrips = JSON.parse(localStorage.getItem('booktrips'));
-		} else {
-		// Create booktrips object in localStorage
-			const currentId = `${create_UUID()} `
-			booktrips[currentId] = {
-				city: '',
-				date: '',
-			}
-			localStorage.setItem('booktrips', JSON.stringify(booktrips));
-		}
-		buildBooktrips();
     }catch(error){
       console.log("error", error);
     }
-}
+};
 
-const storeBooktrip = async (e) => {
-
-    const request = await fetch('/all');
-	e.preventDefault();
-    let cityValue = document.getElementById("city-name").value;
-    let dateValue = document.getElementById("date-picker").value;
-	
-    try{
-        const allData = await request.json();
-		// Set booktrip object, add to array
-		const booktrip = {
-			city: cityValue,
-			date: dateValue,
-		};
-		booktrips[dateValue] = booktrip;
-		// Set booktrips in localStorage, fetch, reset input fields
-		localStorage.setItem('booktrips', JSON.stringify(booktrips));
-		fetchBooktrips();
-		booktripForm.reset();
-		document.getElementById("city-name").focus();
-    }catch(error){
-      console.log("error", error);
-    }
-}
-
-const deleteBooktrip = async (id) => {
-
-    const request = await fetch('/all');
-    try{
-        const allData = await request.json();
-		// Loop through the bookmarks array
-		if (booktrips[id]) {
-			delete booktrips[id]
-		}
-		// Update bookmarks array in localStorage, re-populate DOM
-		localStorage.setItem('booktrips', JSON.stringify(booktrips));
-		fetchBooktrips();
-    }catch(error){
-      console.log("error", error);
-    }
-
-}
-
-// Event Listener
-booktripForm.addEventListener('submit', storeBooktrip);
-
-// On Load, Fetch booktrips
-window.onload = fetchBooktrips();
 
   export { 
       performAction,
       countdownTimer,
       showModal,
-      create_UUID
+      updateUI
      }  
 

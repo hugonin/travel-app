@@ -18,14 +18,14 @@ function countdownTimer() {
             days : Math.floor(difference / day),
             hours : Math.floor((difference / hour) % 24),
             minutes : Math.floor((difference / minute) % 60),
-            seconds : Math.floor((difference / second) % 60),
+            //seconds : Math.floor((difference / second) % 60),
         };
         remaining = Object.keys(parts).map(part => {
             return `${parts[part]} ${part}`;
          }).join(" ");
     }
 
-  // document.getElementById("countdown").innerHTML = ` ${remaining}`;
+  document.getElementById("countdown").innerHTML = ` ${remaining}`;
 
   }
   

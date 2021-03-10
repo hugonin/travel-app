@@ -14,3 +14,7 @@ function validate(cityValue, dateValue) {
     // Valid
     return true;
   }
+
+  export {
+    validate
+  }

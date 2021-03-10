@@ -91,6 +91,7 @@ a:active {
 .cta {
   display: block;
   padding: .7em;
+  margin-top: .5em;
   margin-bottom: 1em;
   background-color: var(--primary-color);
   border-radius: var(--border-radius);
@@ -237,6 +238,7 @@ button:focus {
         ". . timer" 
         ". . temp"
         ". . description"
+        ". . rest"
       ;
   }
 
@@ -276,6 +278,10 @@ button:focus {
 
   #description {
     grid-area: description;
+  }
+
+  #rest {
+    grid-area: rest;
   }
 
   .btn-container {
