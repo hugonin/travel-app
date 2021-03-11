@@ -27,7 +27,7 @@ function countdownTimer() {
 
   document.getElementById("countdown").innerHTML = ` ${remaining}`;
 
-  }
+}
   
 countdownTimer();
 setInterval(countdownTimer, 1000);

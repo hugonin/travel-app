@@ -1,18 +1,30 @@
-// To run properly the test of the countdown timer we have to give a value to the dateInput variable in countdown.js file also to comment the line 28
+
+'use strict';
 
 jest.useFakeTimers();
 
+describe('Testing the countdownTimer', () => {
+  test('schedules a 10-second timer after 1 second', () => {
+    const countdownTimer = require('../src/client/js/fakeCountdown');
+    const callback = jest.fn();
 
-describe("testing the countdown timer", () => {
-    test('waits 1 second before ending the request', () => {
-        const countdownTimer = require('../src/client/js/countdown');
-      
-        countdownTimer();
-      
-        expect(setInterval).toHaveBeenCalledTimes(1);
-        expect(setInterval).toHaveBeenLastCalledWith(expect.any(Function), 1000);
-      });
+    countdownTimer(callback);
 
+    // At this point in time, there should have been a single call to
+    // setInterval to schedule the end of the trip planification in 1 second.
+    expect(setInterval).toHaveBeenCalledTimes(1);
+    expect(setInterval).toHaveBeenLastCalledWith(expect.any(Function), 1000);
 
-    
+    // Fast forward and exhaust only currently pending timers
+    // (but not any new timers that get created during that process)
+    jest.runOnlyPendingTimers();
+
+    // At this point, our 1-second timer should have fired it's callback
+    expect(callback).toBeCalled();
+
+    // And it should have created a new timer to start the trip planification over in
+    // 10 seconds
+    expect(setInterval).toHaveBeenCalledTimes(2);
+    expect(setInterval).toHaveBeenLastCalledWith(expect.any(Function), 10000);
+  });
 });
